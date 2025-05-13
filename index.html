@@ -1,138 +1,306 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <title>WhisperLunea 🌙</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #fce4ec, #e3f2fd);
-      color: #333;
-      text-align: center;
-    }
-    .hero {
-      background: url('assets/banner.png') center/cover no-repeat;
-      padding: 100px 20px 60px;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    .hero h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2em;
-      font-style: italic;
-    }
-    .buttons {
-      margin: 30px 0;
-    }
-    .btn {
-      background-color: #d1c4e9;
-      border: none;
-      color: white;
-      padding: 12px 24px;
-      margin: 8px;
-      font-size: 1em;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #9575cd;
-    }
-    .section {
-      display: none;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-    .section.active {
-      display: block;
-    }
-    footer {
-      background: linear-gradient(to bottom, #f3e5f5, #e0f7fa);
-      color: #333;
-      padding: 50px 20px;
-      text-align: left;
-      max-width: 760px;
-      margin: auto;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.1);
-    }
-    footer h2 {
-      font-size: 1.4em;
-      margin-bottom: 10px;
-    }
-    footer p, footer li {
-      font-size: 0.95em;
-      line-height: 1.6em;
-    }
-    footer ul {
-      padding-left: 20px;
-      list-style: disc;
-    }
-  </style>
-  <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperLunea 🌙 - 水晶情绪疗愈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f8d7e8;
+            --secondary-color: #a8e6cf;
+            --text-color: #4a4a4a;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .brand-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+        }
+
+        .moon-emoji {
+            font-size: 3rem;
+            margin-left: 0.5rem;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            color: #4a4a4a;
+            margin-bottom: 3rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 1rem auto 3rem;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .quiz-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .quiz-button:hover {
+            background: linear-gradient(135deg, #ffd1dc, #e0ffff);
+            transform: translateY(-2px);
+        }
+
+        .quiz-button.active {
+            background: linear-gradient(135deg, #ffd1dc, #e0ffff);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .quiz-sections {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .quiz-section {
+            display: none;
+            padding: 3rem;
+        }
+
+        .quiz-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c2c2c;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .about-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4rem 2rem;
+            margin: 4rem auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .collections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .collection-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .collection-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .contact {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .brand-title {
+                font-size: 3rem;
+            }
+
+            .slogan {
+                font-size: 1.2rem;
+            }
+
+            .quiz-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .quiz-section {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>WhisperLunea 🌙</h1>
-    <p>Each crystal whispers the feelings you couldn't put into words.<br>每一颗水晶，都是你未曾说出的心事低语。</p>
-  </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="brand-title">WhisperLunea<span class="moon-emoji">🌙</span></h1>
+            <p class="slogan">Each crystal whispers the feelings you couldn't put into words.<br>
+            每一颗水晶，都是你未曾说出的心事低语。</p>
+        </div>
+    </section>
 
-  <div class="buttons">
-    <button class="btn" onclick="showSection('emotion')">🔮 今日情绪</button>
-    <button class="btn" onclick="showSection('dream')">🌙 月光气质</button>
-    <button class="btn" onclick="showSection('mbti')">🧠 疗愈人格</button>
-  </div>
+    <nav class="quiz-nav">
+        <button class="quiz-button active" onclick="showQuiz('emotion')">🔮 今日情绪</button>
+        <button class="quiz-button" onclick="showQuiz('dream')">🌙 月光气质</button>
+        <button class="quiz-button" onclick="showQuiz('mbti')">🧠 疗愈人格</button>
+    </nav>
 
-  <div id="emotion" class="section active">
-    <h2>🔮 今日情绪测一测</h2>
-    <p>这里将显示情绪测一测的题目（后续可填写内容）</p>
-  </div>
+    <div class="quiz-sections">
+        <div id="emotion" class="quiz-section active">
+            <h2 class="section-title">🔮 今日情绪测一测</h2>
+            <div class="quiz-content">
+                <p>这里将显示情绪测一测的题目（后续可填写内容）</p>
+            </div>
+        </div>
 
-  <div id="dream" class="section">
-    <h2>🌙 月光气质测一测</h2>
-    <p>这里将显示月光气质的题目（后续可填写内容）</p>
-  </div>
+        <div id="dream" class="quiz-section">
+            <h2 class="section-title">🌙 月光气质测一测</h2>
+            <div class="quiz-content">
+                <p>这里将显示月光气质的题目（后续可填写内容）</p>
+            </div>
+        </div>
 
-  <div id="mbti" class="section">
-    <h2>🧠 疗愈人格测一测</h2>
-    <p>这里将显示 MBTI 类型的题目（后续可填写内容）</p>
-  </div>
+        <div id="mbti" class="quiz-section">
+            <h2 class="section-title">🧠 疗愈人格测一测</h2>
+            <div class="quiz-content">
+                <p>这里将显示 MBTI 类型的题目（后续可填写内容）</p>
+            </div>
+        </div>
+    </div>
 
-  <footer>
-    <h2>About WhisperLunea / 品牌简介</h2>
-    <p>WhisperLunea is a crystal jewelry brand created by Gracy Zhang, focusing on emotional healing and self-connection. Inspired by moonlight, mindfulness, and memory, each bracelet represents a story and a feeling.<br>
-    每串手链，都是情绪的低语，记录你当下的心境。</p>
+    <section class="about-section">
+        <h2 class="section-title">About WhisperLunea / 品牌简介</h2>
+        <p>WhisperLunea is a crystal jewelry brand created by Gracy Zhang, focusing on emotional healing and self-connection. Inspired by moonlight, mindfulness, and memory, each bracelet represents a story and a feeling.</p>
+        <p>每串手链，都是情绪的低语，记录你当下的心境。</p>
+    </section>
 
-    <h2>Collections / 精选系列</h2>
-    <ul>
-      <li>Amethyst Calm – 平静焦虑</li>
-      <li>Rose Quartz Bloom – 爱与自我疗愈</li>
-      <li>Lunea Clear – 清澈专注，连接直觉</li>
-    </ul>
+    <section class="section">
+        <h2 class="section-title">Collections / 精选系列</h2>
+        <div class="collections">
+            <div class="collection-item">
+                <h3>Amethyst Calm</h3>
+                <p>平静焦虑</p>
+            </div>
+            <div class="collection-item">
+                <h3>Rose Quartz Bloom</h3>
+                <p>爱与自我疗愈</p>
+            </div>
+            <div class="collection-item">
+                <h3>Lunea Clear</h3>
+                <p>清澈专注，连接直觉</p>
+            </div>
+        </div>
+    </section>
 
-    <h2>Find Your Crystal / 属于你的情绪水晶</h2>
-    <p>不确定你现在最需要哪种水晶能量？点击上方按钮，开启测一测体验。</p>
+    <section class="contact">
+        <h2 class="section-title">Contact / 联系我们</h2>
+        <div class="social-links">
+            <a href="https://instagram.com/whisperlunea" target="_blank">Instagram: @whisperlunea</a>
+            <a href="#" target="_blank">小红书: WhisperLunea</a>
+            <a href="mailto:whisperlunea@gmail.com">Email: whisperlunea@gmail.com</a>
+        </div>
+    </section>
 
-    <h2>Contact / 联系我们</h2>
-    <p>Instagram: @whisperlunea<br>
-    小红书: WhisperLunea<br>
-    Email: whisperlunea@gmail.com</p>
-  </footer>
+    <script>
+        function showQuiz(quizId) {
+            // 隐藏所有测试区块
+            document.querySelectorAll('.quiz-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 移除所有按钮的active状态
+            document.querySelectorAll('.quiz-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 显示选中的测试区块
+            document.getElementById(quizId).classList.add('active');
+            
+            // 激活对应的按钮
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
