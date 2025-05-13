@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperLunea - Your Crystal Match 你的水晶匹配</title>
+    <style>
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #b69ac4;
+            --text-color: #4a4a4a;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            animation: fadeIn 1s ease;
+        }
+
+        .crystal-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .crystal-header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+
+        .crystal-header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .crystal-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .crystal-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .crystal-info h2 {
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .crystal-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .crystal-properties {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .crystal-properties li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .crystal-properties li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .zodiac-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 2rem auto 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="crystal-header">
+            <h1>Amethyst 紫水晶</h1>
+            <p>The Crystal of Peace and Wisdom<br>平静与智慧的能量水晶</p>
+        </div>
+
+        <img src="../assets/images/amethyst.jpg" alt="Amethyst" class="crystal-img">
+
+        <div class="crystal-info">
+            <h2>Your Crystal Match 你的水晶匹配</h2>
+            <p>Based on your emotional resonance, Amethyst is your perfect crystal companion.<br>
+            根据你的情感共鸣，紫水晶是最适合你的水晶伴侣。</p>
+            
+            <ul class="crystal-properties">
+                <li>Promotes inner peace and spiritual growth<br>
+                促进内心平静与灵性成长</li>
+                <li>Enhances meditation and mindfulness<br>
+                增强冥想效果与正念练习</li>
+                <li>Calms the mind and reduces anxiety<br>
+                安抚心神，减轻焦虑</li>
+                <li>Improves sleep quality and dream clarity<br>
+                改善睡眠质量，增加梦境清晰度</li>
+            </ul>
+        </div>
+
+        <div class="zodiac-info">
+            <h2>Your Zodiac Harmony 星座调和</h2>
+            <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
+        </div>
+
+        <div class="crystal-info">
+            <h2>Usage Recommendations 使用建议</h2>
+            <ul class="crystal-properties">
+                <li>Place under your pillow for peaceful sleep<br>
+                放在枕头下方，获得安眠</li>
+                <li>Meditate with the crystal for spiritual connection<br>
+                冥想时使用，增强灵性连接</li>
+                <li>Keep in your workspace for mental clarity<br>
+                放在工作区域，保持思维清晰</li>
+                <li>Carry with you during stressful situations<br>
+                压力情况下随身携带</li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Home 返回首页</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const zodiac = localStorage.getItem('userZodiac');
+            const zodiacInfo = {
+                aries: {
+                    en: "For Aries, Amethyst helps calm your fiery energy and enhance spiritual awareness",
+                    zh: "紫水晶帮助白羊座的你平衡火热能量，提升灵性意识"
+                },
+                taurus: {
+                    en: "Amethyst helps Taurus find peace through spiritual connection",
+                    zh: "紫水晶帮助金牛座的你通过灵性连接找到内心平静"
+                },
+                gemini: {
+                    en: "For Gemini, Amethyst brings mental clarity and emotional stability",
+                    zh: "紫水晶为双子座的你带来思维清晰和情感稳定"
+                },
+                cancer: {
+                    en: "Amethyst helps Cancer balance sensitivity with inner strength",
+                    zh: "紫水晶帮助巨蟹座的你平衡敏感度与内在力量"
+                },
+                leo: {
+                    en: "For Leo, Amethyst promotes humility and spiritual wisdom",
+                    zh: "紫水晶培养狮子座的你的谦逊品质与灵性智慧"
+                },
+                virgo: {
+                    en: "Amethyst helps Virgo release perfectionism and find peace",
+                    zh: "紫水晶帮助处女座的你释放完美主义，找到平静"
+                },
+                libra: {
+                    en: "For Libra, Amethyst deepens meditation and spiritual balance",
+                    zh: "紫水晶加深天秤座的你的冥想体验与灵性平衡"
+                },
+                scorpio: {
+                    en: "Amethyst helps Scorpio transform intensity into spiritual insight",
+                    zh: "紫水晶帮助天蝎座的你将强烈感受转化为灵性洞察"
+                },
+                sagittarius: {
+                    en: "For Sagittarius, Amethyst grounds spiritual exploration",
+                    zh: "紫水晶为射手座的你的灵性探索提供稳定基础"
+                },
+                capricorn: {
+                    en: "Amethyst helps Capricorn balance material and spiritual goals",
+                    zh: "紫水晶帮助摩羯座的你平衡物质与精神追求"
+                },
+                aquarius: {
+                    en: "For Aquarius, Amethyst enhances intuition and spiritual connection",
+                    zh: "紫水晶增强水瓶座的你的直觉与灵性连接"
+                },
+                pisces: {
+                    en: "Amethyst amplifies Pisces's natural spiritual gifts",
+                    zh: "紫水晶放大双鱼座的你天生的灵性天赋"
+                }
+            };
+            
+            if (zodiac && zodiacInfo[zodiac]) {
+                document.getElementById('zodiacText').innerHTML = 
+                    `${zodiacInfo[zodiac].en}<br>${zodiacInfo[zodiac].zh}`;
+            } else {
+                document.getElementById('zodiacText').innerHTML = 
+                    "Zodiac sign not found<br>未找到星座信息";
+            }
+        };
+    </script>
+</body>
+</html> 

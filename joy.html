@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperLunea - Your Crystal Match 你的水晶匹配</title>
+    <style>
+        :root {
+            --primary-color: #ffb7c5;
+            --secondary-color: #ffd1dc;
+            --text-color: #4a4a4a;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .result-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            animation: fadeIn 1s ease;
+        }
+
+        .crystal-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .crystal-header h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+
+        .crystal-header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .crystal-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .crystal-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .crystal-info h2 {
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .crystal-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .crystal-properties {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .crystal-properties li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .crystal-properties li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .zodiac-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 2rem auto 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="crystal-header">
+            <h1>Rose Quartz 玫瑰晶</h1>
+            <p>The Crystal of Love and Joy<br>爱与喜悦的能量水晶</p>
+        </div>
+
+        <img src="../assets/images/rose-quartz.jpg" alt="Rose Quartz" class="crystal-img">
+
+        <div class="crystal-info">
+            <h2>Your Crystal Match 你的水晶匹配</h2>
+            <p>Based on your emotional resonance, Rose Quartz is your perfect crystal companion.<br>
+            根据你的情感共鸣，玫瑰晶是最适合你的水晶伴侣。</p>
+            
+            <ul class="crystal-properties">
+                <li>Enhances love and emotional healing<br>
+                增强爱的能量，促进情感疗愈</li>
+                <li>Brings joy and positive energy into your life<br>
+                为生活带来喜悦与正能量</li>
+                <li>Promotes self-love and inner peace<br>
+                培养自我关爱，获得内心平静</li>
+                <li>Strengthens relationships and emotional bonds<br>
+                增进人际关系，加强情感联结</li>
+            </ul>
+        </div>
+
+        <div class="zodiac-info">
+            <h2>Your Zodiac Harmony 星座调和</h2>
+            <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
+        </div>
+
+        <div class="crystal-info">
+            <h2>Usage Recommendations 使用建议</h2>
+            <ul class="crystal-properties">
+                <li>Place by your bedside for emotional healing during sleep<br>
+                放置在床头，在睡眠中获得情感疗愈</li>
+                <li>Wear as jewelry to maintain loving energy throughout the day<br>
+                佩戴首饰，全天保持爱的能量</li>
+                <li>Meditate with the crystal for self-love practice<br>
+                进行冥想时使用，练习自我关爱</li>
+                <li>Keep in your living space to promote harmony<br>
+                放置在生活空间，促进环境和谐</li>
+            </ul>
+        </div>
+
+        <a href="../index.html" class="back-btn">← Back to Home 返回首页</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const zodiac = localStorage.getItem('userZodiac');
+            const zodiacInfo = {
+                aries: {
+                    en: "As an Aries, Rose Quartz helps balance your dynamic energy with emotional awareness",
+                    zh: "作为白羊座的你，玫瑰晶能帮助平衡你的活力与情感意识"
+                },
+                taurus: {
+                    en: "For Taurus, Rose Quartz enhances your natural appreciation for love and beauty",
+                    zh: "作为金牛座的你，玫瑰晶能增强你对爱与美的天然感知"
+                },
+                gemini: {
+                    en: "Rose Quartz helps Gemini focus on emotional depth beyond surface connections",
+                    zh: "玫瑰晶帮助双子座的你在社交之外建立更深层的情感连接"
+                },
+                cancer: {
+                    en: "Perfect for Cancer's nurturing nature, Rose Quartz amplifies your caring energy",
+                    zh: "玫瑰晶与巨蟹座的关怀天性完美契合，放大你的爱心能量"
+                },
+                leo: {
+                    en: "For Leo, Rose Quartz balances self-love with compassion for others",
+                    zh: "玫瑰晶帮助狮子座的你平衡自我关爱与对他人的同理心"
+                },
+                virgo: {
+                    en: "Rose Quartz helps Virgo connect with emotions beyond logical thinking",
+                    zh: "玫瑰晶帮助处女座的你超越理性思维，联结情感层面"
+                },
+                libra: {
+                    en: "Libra's natural harmony is enhanced by Rose Quartz's loving energy",
+                    zh: "玫瑰晶的爱的能量增强天秤座的你天生的和谐特质"
+                },
+                scorpio: {
+                    en: "For Scorpio, Rose Quartz transforms intense emotions into loving wisdom",
+                    zh: "玫瑰晶帮助天蝎座的你将强烈的情感转化为智慧的关爱"
+                },
+                sagittarius: {
+                    en: "Rose Quartz grounds Sagittarius's adventurous spirit with emotional stability",
+                    zh: "玫瑰晶为射手座的你的冒险精神注入情感稳定性"
+                },
+                capricorn: {
+                    en: "Rose Quartz helps Capricorn balance ambition with emotional wellbeing",
+                    zh: "玫瑰晶帮助摩羯座的你平衡事业心与情感健康"
+                },
+                aquarius: {
+                    en: "For Aquarius, Rose Quartz bridges intellectual and emotional understanding",
+                    zh: "玫瑰晶为水瓶座的你架起理性与情感之间的桥梁"
+                },
+                pisces: {
+                    en: "Rose Quartz amplifies Pisces's natural empathy and emotional intuition",
+                    zh: "玫瑰晶增强双鱼座的你天生的同理心与情感直觉"
+                }
+            };
+            
+            if (zodiac && zodiacInfo[zodiac]) {
+                document.getElementById('zodiacText').innerHTML = 
+                    `${zodiacInfo[zodiac].en}<br>${zodiacInfo[zodiac].zh}`;
+            } else {
+                document.getElementById('zodiacText').innerHTML = 
+                    "Zodiac sign not found<br>未找到星座信息";
+            }
+        };
+    </script>
+</body>
+</html> 
