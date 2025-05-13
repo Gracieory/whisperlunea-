@@ -44,8 +44,7 @@
 
         .crystal-header h1 {
             font-size: 2.5rem;
-            font-weight: 300;
-            color: #2c2c2c;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
@@ -70,24 +69,19 @@
             padding: 2rem;
             border-radius: 15px;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .crystal-info h2 {
-            color: #2c2c2c;
-            margin-bottom: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            text-align: center;
-        }
-
-        .crystal-info p {
-            color: #666;
-            margin-bottom: 1rem;
-            text-align: center;
         }
 
         .crystal-properties {
             list-style: none;
             margin: 1.5rem 0;
+            text-align: left;
         }
 
         .crystal-properties li {
@@ -102,13 +96,23 @@
             left: 0;
         }
 
-        .zodiac-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            text-align: center;
+        .element-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
         }
+
+        .element-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .element-water { background: #7fcdff; }
+        .element-metal { background: #c5c5c5; }
 
         .back-btn {
             display: block;
@@ -139,7 +143,7 @@
 <body>
     <div class="result-container">
         <div class="crystal-header">
-            <h1>Amethyst 紫水晶</h1>
+            <h1>Amethyst 紫水晶 💜</h1>
             <p>The Crystal of Peace and Wisdom<br>平静与智慧的能量水晶</p>
         </div>
 
@@ -147,9 +151,16 @@
 
         <div class="crystal-info">
             <h2>Your Crystal Match 你的水晶匹配</h2>
+            <div class="element-tags">
+                <span class="element-tag element-water">水相 Water</span>
+                <span class="element-tag element-metal">金相 Metal</span>
+            </div>
             <p>Based on your emotional resonance, Amethyst is your perfect crystal companion.<br>
             根据你的情感共鸣，紫水晶是最适合你的水晶伴侣。</p>
-            
+        </div>
+
+        <div class="crystal-info">
+            <h2>Key Benefits 主要功效</h2>
             <ul class="crystal-properties">
                 <li>Promotes inner peace and spiritual growth<br>
                 促进内心平静与灵性成长</li>
@@ -162,7 +173,7 @@
             </ul>
         </div>
 
-        <div class="zodiac-info">
+        <div class="crystal-info">
             <h2>Your Zodiac Harmony 星座调和</h2>
             <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
         </div>

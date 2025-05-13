@@ -498,14 +498,6 @@
                 let maxScore = Math.max(...Object.values(scores));
                 let result = Object.keys(scores).find(key => scores[key] === maxScore);
 
-                // 如果没有明显倾向，根据情绪状态决定
-                if (!result) {
-                    if (answers['1'] === 'anxious') return 'calm';
-                    if (answers['1'] === 'sad') return 'joy';
-                    if (answers['1'] === 'confused') return 'focus';
-                    return 'dreamy';
-                }
-
                 return result;
             }
 
@@ -540,10 +532,6 @@
                         alert('请完成所有问题 / Please complete all questions');
                         return;
                     }
-
-                    // 保存结果到 localStorage
-                    localStorage.setItem('quizResult', resultType);
-                    localStorage.setItem('userZodiac', answers['4']);
 
                     // 使用相对路径
                     window.location.href = `results/${resultType}.html`;
