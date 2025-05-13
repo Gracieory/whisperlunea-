@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhisperLunea - Your Crystal Match 你的水晶匹配</title>
+    <title>WhisperLunea 🌙 - Your Crystal Match</title>
     <style>
         :root {
             --primary-color: #ffb7c5;
             --secondary-color: #ffd1dc;
+            --accent-color: #ff9eaa;
             --text-color: #4a4a4a;
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
@@ -22,9 +23,17 @@
             font-family: 'Noto Serif SC', serif;
             line-height: 1.6;
             color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #ffb7c5, #ffd1dc, #ffe3e7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             min-height: 100vh;
             padding: 2rem;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .result-container {
@@ -44,8 +53,7 @@
 
         .crystal-header h1 {
             font-size: 2.5rem;
-            font-weight: 300;
-            color: #2c2c2c;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
@@ -70,24 +78,19 @@
             padding: 2rem;
             border-radius: 15px;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .crystal-info h2 {
-            color: #2c2c2c;
-            margin-bottom: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            text-align: center;
-        }
-
-        .crystal-info p {
-            color: #666;
-            margin-bottom: 1rem;
-            text-align: center;
         }
 
         .crystal-properties {
             list-style: none;
             margin: 1.5rem 0;
+            text-align: left;
         }
 
         .crystal-properties li {
@@ -102,13 +105,23 @@
             left: 0;
         }
 
-        .zodiac-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            text-align: center;
+        .element-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
         }
+
+        .element-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .element-water { background: #7fcdff; }
+        .element-earth { background: #97c1a9; }
 
         .back-btn {
             display: block;
@@ -130,6 +143,32 @@
             box-shadow: 0 5px 15px var(--shadow-color);
         }
 
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -139,7 +178,7 @@
 <body>
     <div class="result-container">
         <div class="crystal-header">
-            <h1>Rose Quartz 玫瑰晶</h1>
+            <h1>Rose Quartz 玫瑰晶 💗</h1>
             <p>The Crystal of Love and Joy<br>爱与喜悦的能量水晶</p>
         </div>
 
@@ -147,22 +186,36 @@
 
         <div class="crystal-info">
             <h2>Your Crystal Match 你的水晶匹配</h2>
+            <div class="element-tags">
+                <span class="element-tag element-water">水相 Water</span>
+                <span class="element-tag element-earth">土相 Earth</span>
+            </div>
             <p>Based on your emotional resonance, Rose Quartz is your perfect crystal companion.<br>
             根据你的情感共鸣，玫瑰晶是最适合你的水晶伴侣。</p>
-            
-            <ul class="crystal-properties">
-                <li>Enhances love and emotional healing<br>
-                增强爱的能量，促进情感疗愈</li>
-                <li>Brings joy and positive energy into your life<br>
-                为生活带来喜悦与正能量</li>
-                <li>Promotes self-love and inner peace<br>
-                培养自我关爱，获得内心平静</li>
-                <li>Strengthens relationships and emotional bonds<br>
-                增进人际关系，加强情感联结</li>
-            </ul>
         </div>
 
-        <div class="zodiac-info">
+        <div class="crystal-info">
+            <h2>Key Benefits 主要功效</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <h3>💕 Love & Relationships 爱情缘分</h3>
+                    <p>Attracts romantic love and strengthens relationships<br>
+                    吸引浪漫之爱，增进感情关系</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💝 Self-Love 自我关爱</h3>
+                    <p>Promotes self-acceptance and inner healing<br>
+                    培养自我接纳，内在疗愈</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🌸 Emotional Healing 情感疗愈</h3>
+                    <p>Soothes emotional wounds and past trauma<br>
+                    抚慰情感创伤，化解过往</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="crystal-info">
             <h2>Your Zodiac Harmony 星座调和</h2>
             <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
         </div>
@@ -170,14 +223,14 @@
         <div class="crystal-info">
             <h2>Usage Recommendations 使用建议</h2>
             <ul class="crystal-properties">
-                <li>Place by your bedside for emotional healing during sleep<br>
-                放置在床头，在睡眠中获得情感疗愈</li>
-                <li>Wear as jewelry to maintain loving energy throughout the day<br>
-                佩戴首饰，全天保持爱的能量</li>
+                <li>Place by your bedside for sweet dreams and peaceful sleep<br>
+                放置在床头，助你好梦安眠</li>
+                <li>Wear as jewelry to attract love and maintain positive energy<br>
+                佩戴首饰，吸引爱情，保持正能量</li>
                 <li>Meditate with the crystal for self-love practice<br>
-                进行冥想时使用，练习自我关爱</li>
-                <li>Keep in your living space to promote harmony<br>
-                放置在生活空间，促进环境和谐</li>
+                冥想时使用，练习自我关爱</li>
+                <li>Keep in your relationship corner (Southwest) to enhance romance<br>
+                放置在感情位（西南方），增进桃花运</li>
             </ul>
         </div>
 
@@ -189,52 +242,52 @@
             const zodiac = localStorage.getItem('userZodiac');
             const zodiacInfo = {
                 aries: {
-                    en: "As an Aries, Rose Quartz helps balance your dynamic energy with emotional awareness",
-                    zh: "作为白羊座的你，玫瑰晶能帮助平衡你的活力与情感意识"
+                    en: "Rose Quartz helps balance Aries' passionate nature with gentle love energy",
+                    zh: "玫瑰晶帮助白羊座平衡热情与温柔的能量"
                 },
                 taurus: {
-                    en: "For Taurus, Rose Quartz enhances your natural appreciation for love and beauty",
-                    zh: "作为金牛座的你，玫瑰晶能增强你对爱与美的天然感知"
+                    en: "Perfect for Taurus's appreciation of beauty and love of comfort",
+                    zh: "完美契合金牛座对美的欣赏与对舒适的追求"
                 },
                 gemini: {
-                    en: "Rose Quartz helps Gemini focus on emotional depth beyond surface connections",
-                    zh: "玫瑰晶帮助双子座的你在社交之外建立更深层的情感连接"
+                    en: "Helps Gemini connect emotions with communication",
+                    zh: "帮助双子座将情感与沟通完美结合"
                 },
                 cancer: {
-                    en: "Perfect for Cancer's nurturing nature, Rose Quartz amplifies your caring energy",
-                    zh: "玫瑰晶与巨蟹座的关怀天性完美契合，放大你的爱心能量"
+                    en: "Enhances Cancer's natural nurturing abilities with self-love",
+                    zh: "增强巨蟹座天生的关怀能力，平衡自我关爱"
                 },
                 leo: {
-                    en: "For Leo, Rose Quartz balances self-love with compassion for others",
-                    zh: "玫瑰晶帮助狮子座的你平衡自我关爱与对他人的同理心"
+                    en: "Balances Leo's self-expression with compassionate love",
+                    zh: "平衡狮子座的自我表达与慈悲之爱"
                 },
                 virgo: {
-                    en: "Rose Quartz helps Virgo connect with emotions beyond logical thinking",
-                    zh: "玫瑰晶帮助处女座的你超越理性思维，联结情感层面"
+                    en: "Helps Virgo open their heart while maintaining boundaries",
+                    zh: "帮助处女座在保持界限的同时敞开心扉"
                 },
                 libra: {
-                    en: "Libra's natural harmony is enhanced by Rose Quartz's loving energy",
-                    zh: "玫瑰晶的爱的能量增强天秤座的你天生的和谐特质"
+                    en: "Amplifies Libra's natural affinity for love and harmony",
+                    zh: "增强天秤座对爱与和谐的天然亲和力"
                 },
                 scorpio: {
-                    en: "For Scorpio, Rose Quartz transforms intense emotions into loving wisdom",
-                    zh: "玫瑰晶帮助天蝎座的你将强烈的情感转化为智慧的关爱"
+                    en: "Softens Scorpio's intensity with gentle loving energy",
+                    zh: "用温柔的爱意软化天蝎座的强烈情感"
                 },
                 sagittarius: {
-                    en: "Rose Quartz grounds Sagittarius's adventurous spirit with emotional stability",
-                    zh: "玫瑰晶为射手座的你的冒险精神注入情感稳定性"
+                    en: "Helps Sagittarius find emotional stability in relationships",
+                    zh: "帮助射手座在关系中找到情感稳定"
                 },
                 capricorn: {
-                    en: "Rose Quartz helps Capricorn balance ambition with emotional wellbeing",
-                    zh: "玫瑰晶帮助摩羯座的你平衡事业心与情感健康"
+                    en: "Encourages Capricorn to open up to love and vulnerability",
+                    zh: "鼓励摩羯座向爱敞开心扉，接纳脆弱"
                 },
                 aquarius: {
-                    en: "For Aquarius, Rose Quartz bridges intellectual and emotional understanding",
-                    zh: "玫瑰晶为水瓶座的你架起理性与情感之间的桥梁"
+                    en: "Connects Aquarius's humanitarian love with personal relationships",
+                    zh: "将水瓶座的博爱与个人情感联结"
                 },
                 pisces: {
-                    en: "Rose Quartz amplifies Pisces's natural empathy and emotional intuition",
-                    zh: "玫瑰晶增强双鱼座的你天生的同理心与情感直觉"
+                    en: "Enhances Pisces' natural romantic nature and emotional healing",
+                    zh: "增强双鱼座浪漫天性，促进情感疗愈"
                 }
             };
             
