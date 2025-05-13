@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhisperLunea 🌙 - Crystal Personality Quiz</title>
-    <style>
+  <style>
         :root {
             --primary-color: #e2a9e5;
             --secondary-color: #b8e1ff;
@@ -19,7 +19,7 @@
             box-sizing: border-box;
         }
 
-        body {
+    body {
             font-family: 'Noto Serif SC', serif;
             line-height: 1.6;
             color: var(--text-color);
@@ -81,7 +81,7 @@
             background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border-radius: 15px;
-            text-align: center;
+      text-align: center;
             transition: transform 0.3s ease;
             box-shadow: 0 5px 15px var(--shadow-color);
         }
@@ -125,7 +125,7 @@
         .element-wood { background: #98d698; }
 
         .start-quiz {
-            display: inline-block;
+      display: inline-block;
             padding: 1rem 3rem;
             font-size: 1.2rem;
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
@@ -210,8 +210,8 @@
         .nav-btn {
             padding: 0.8rem 2rem;
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            color: white;
-            border: none;
+      color: white;
+      border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -241,7 +241,7 @@
 
         .social-links a {
             color: white;
-            text-decoration: none;
+      text-decoration: none;
             margin: 0 1rem;
             font-size: 1.1rem;
             transition: color 0.3s ease;
@@ -250,14 +250,14 @@
         .social-links a:hover {
             color: var(--accent-color);
         }
-    </style>
+  </style>
 </head>
 <body>
     <div class="container">
         <!-- Home Section -->
         <section class="section active" id="home">
             <div class="hero">
-                <h1>WhisperLunea 🌙</h1>
+  <h1>WhisperLunea 🌙</h1>
                 <p>Discover Your Crystal Personality<br>探索你的水晶个性</p>
                 <button class="start-quiz" onclick="startQuiz()">✨ Start Quiz 开始测试 ✨</button>
             </div>
@@ -477,7 +477,7 @@
                     showQuestion(currentQuestion);
                 } else {
                     // Show results
-                    window.location.href = './results/' + determineResult();
+                    window.location.href = 'results/' + determineResult();
                 }
             });
         });
