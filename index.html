@@ -476,7 +476,8 @@
                     currentQuestion++;
                     showQuestion(currentQuestion);
                 } else {
-                    window.location.href = 'results/' + determineResult();
+                    // Show results
+                    window.location.href = './results/' + determineResult();
                 }
             });
         });
