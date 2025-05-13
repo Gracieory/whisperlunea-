@@ -1,102 +1,194 @@
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <title>WhisperLunea 情绪水晶测一测</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #fce4ec, #e3f2fd);
-      padding: 40px;
-      text-align: center;
-      color: #444;
-    }
-    .quiz-box {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 700px;
-      margin: 20px auto;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      font-size: 2em;
-    }
-    label {
-      display: block;
-      margin: 12px 0;
-    }
-    select, button {
-      font-size: 1em;
-      padding: 10px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperLunea 🌙 - Crystal Personality Quiz</title>
+    <style>
+        :root {
+            --primary-color: #9b6b9e;
+            --secondary-color: #b69ac4;
+            --accent-color: #ffd1dc;
+            --text-color: #4a4a4a;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px var(--shadow-color);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .crystal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .crystal-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .crystal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .crystal-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .crystal-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .start-quiz {
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .start-quiz:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .social-links {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>🔮 WhisperLunea 情绪水晶测一测</h1>
-  <div class="quiz-box">
-    <form id="quizForm" onsubmit="return processQuiz();">
-      <label>1. 你此刻最接近的感觉是？</label>
-      <select name="q1" required>
-        <option value="">请选择</option>
-        <option value="calm">焦虑紧张</option>
-        <option value="joy">开心放松</option>
-        <option value="focus">思绪混乱</option>
-        <option value="dreamy">梦幻模糊</option>
-      </select>
-      <label>2. 你希望水晶带给你什么？</label>
-      <select name="q2" required>
-        <option value="">请选择</option>
-        <option value="calm">安抚和平静</option>
-        <option value="joy">鼓励与快乐</option>
-        <option value="focus">清晰与专注</option>
-        <option value="dreamy">灵感与连接</option>
-      </select>
-      <label>3. 如果水晶可以说话，它会对你说什么？</label>
-      <select name="q3" required>
-        <option value="">请选择</option>
-        <option value="calm">你已经很好了。</option>
-        <option value="joy">你正在发光。</option>
-        <option value="focus">你可以找到方向。</option>
-        <option value="dreamy">做梦的人也是治愈者。</option>
-      </select>
-      <label>4. 你是什么星座？</label>
-      <select name="zodiac" required>
-        <option value="">请选择</option>
-        <option value="白羊座 ♈ 火象">白羊座 ♈</option>
-        <option value="金牛座 ♉ 土象">金牛座 ♉</option>
-        <option value="双子座 ♊ 风象">双子座 ♊</option>
-        <option value="巨蟹座 ♋ 水象">巨蟹座 ♋</option>
-        <option value="狮子座 ♌ 火象">狮子座 ♌</option>
-        <option value="处女座 ♍ 土象">处女座 ♍</option>
-        <option value="天秤座 ♎ 风象">天秤座 ♎</option>
-        <option value="天蝎座 ♏ 水象">天蝎座 ♏</option>
-        <option value="射手座 ♐ 火象">射手座 ♐</option>
-        <option value="摩羯座 ♑ 土象">摩羯座 ♑</option>
-        <option value="水瓶座 ♒ 风象">水瓶座 ♒</option>
-        <option value="双鱼座 ♓ 水象">双鱼座 ♓</option>
-      </select>
-      <br><br>
-      <button type="submit">✨ 查看推荐水晶 ✨</button>
-    </form>
-  </div>
-  <script>
-    function processQuiz() {
-      const form = document.forms["quizForm"];
-      const scores = {};
-      ["q1", "q2", "q3"].forEach(q => {
-        const val = form[q].value;
-        scores[val] = (scores[val] || 0) + 1;
-      });
-      const result = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-      const zodiac = form["zodiac"].value;
-      localStorage.setItem("user_zodiac", zodiac);
-      window.location.href = "results/" + result + ".html";
-      return false;
-    }
-  </script>
+    <div class="container">
+        <div class="hero">
+            <h1>WhisperLunea 🌙</h1>
+            <p>Discover Your Crystal Personality<br>探索你的水晶个性</p>
+            <a href="quiz.html" class="start-quiz">Start Quiz 开始测试</a>
+        </div>
+
+        <div class="intro">
+            <h2>Welcome to WhisperLunea 欢迎来到月语水晶</h2>
+            <p>Embark on a journey to discover the crystal that resonates with your soul.<br>
+            踏上寻找与你灵魂共鸣的水晶之旅。</p>
+            <p>Through our carefully crafted quiz, we'll help you find your perfect crystal match.<br>
+            通过我们精心设计的测试，为你找到最适合的水晶伴侣。</p>
+        </div>
+
+        <div class="crystal-cards">
+            <div class="crystal-card">
+                <img src="assets/images/rose-quartz.jpg" alt="Rose Quartz">
+                <h3>Rose Quartz 玫瑰晶</h3>
+                <p>The stone of love and joy<br>爱与喜悦之石</p>
+            </div>
+            <div class="crystal-card">
+                <img src="assets/images/amethyst.jpg" alt="Amethyst">
+                <h3>Amethyst 紫水晶</h3>
+                <p>The stone of peace and wisdom<br>平静与智慧之石</p>
+            </div>
+            <div class="crystal-card">
+                <img src="assets/images/moonstone.jpg" alt="Moonstone">
+                <h3>Moonstone 月光石</h3>
+                <p>The stone of dreams and intuition<br>梦境与直觉之石</p>
+            </div>
+            <div class="crystal-card">
+                <img src="assets/images/clear-quartz.jpg" alt="Clear Quartz">
+                <h3>Clear Quartz 白水晶</h3>
+                <p>The stone of clarity and focus<br>清晰与专注之石</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://instagram.com/whisperlunea" target="_blank">Instagram</a>
+            <a href="https://xiaohongshu.com/whisperlunea" target="_blank">小红书</a>
+            <a href="mailto:contact@whisperlunea.com">Email 邮箱</a>
+        </div>
+    </div>
 </body>
 </html>
