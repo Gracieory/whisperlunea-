@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Your Crystal | WhisperLunea</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fdfaff;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      color: #333;
+    }
+    h1 {
+      color: #9966cc;
+    }
+    .question {
+      margin-bottom: 1.5rem;
+    }
+    .result {
+      background: #fff0f6;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-left: 5px solid #cc99ff;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      background: #9966cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ Find Your Crystal ✨</h1>
+  <form id="quiz">
+    <div class="question">
+      <p>1. 最近你的情绪最接近哪种？</p>
+      <input type="radio" name="q1" value="a" /> 焦虑不安<br/>
+      <input type="radio" name="q1" value="b" /> 情绪低落<br/>
+      <input type="radio" name="q1" value="c" /> 思绪迷乱
+    </div>
+
+    <div class="question">
+      <p>2. 你目前最需要的能量是？</p>
+      <input type="radio" name="q2" value="a" /> 稳定平静<br/>
+      <input type="radio" name="q2" value="b" /> 情感疗愈<br/>
+      <input type="radio" name="q2" value="c" /> 清晰专注
+    </div>
+
+    <div class="question">
+      <p>3. 你希望拥有的气场？</p>
+      <input type="radio" name="q3" value="a" /> 温柔宁静<br/>
+      <input type="radio" name="q3" value="b" /> 柔软坚定<br/>
+      <input type="radio" name="q3" value="c" /> 通透纯净
+    </div>
+
+    <button type="submit">查看结果</button>
+  </form>
+
+  <div id="result" class="result" style="display:none;"></div>
+
+  <script>
+    document.getElementById('quiz').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const answers = [
+        document.querySelector('input[name="q1"]:checked')?.value,
+        document.querySelector('input[name="q2"]:checked')?.value,
+        document.querySelector('input[name="q3"]:checked')?.value
+      ];
+
+      const counts = { a: 0, b: 0, c: 0 };
+      answers.forEach(a => { if (a) counts[a]++; });
+
+      let resultText = '';
+      if (counts.a >= 2) {
+        resultText = "<strong>推荐：</strong>Amethyst Calm<br>平静焦虑，安抚心绪的紫水晶。";
+      } else if (counts.b >= 2) {
+        resultText = "<strong>推荐：</strong>Rose Quartz Bloom<br>爱与疗愈，唤醒内心柔软的粉晶。";
+      } else {
+        resultText = "<strong>推荐：</strong>Lunea Clear<br>澄澈专注，连接灵感与直觉的月光石。";
+      }
+
+      document.getElementById('result').innerHTML = resultText;
+      document.getElementById('result').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
+Add quiz.html
