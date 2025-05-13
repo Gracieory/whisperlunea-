@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WhisperLunea 🌙</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fce4ec, #e3f2fd);
+      color: #333;
+      text-align: center;
+    }
+    .hero {
+      background: url('assets/banner.png') center/cover no-repeat;
+      padding: 100px 20px 60px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+    .buttons {
+      margin: 30px 0;
+    }
+    .btn {
+      background-color: #d1c4e9;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      margin: 8px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #9575cd;
+    }
+    .section {
+      display: none;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .section.active {
+      display: block;
+    }
+    footer {
+      background: linear-gradient(to bottom, #f3e5f5, #e0f7fa);
+      color: #333;
+      padding: 50px 20px;
+      text-align: left;
+      max-width: 760px;
+      margin: auto;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.1);
+    }
+    footer h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    footer p, footer li {
+      font-size: 0.95em;
+      line-height: 1.6em;
+    }
+    footer ul {
+      padding-left: 20px;
+      list-style: disc;
+    }
+  </style>
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <div class="hero">
+    <h1>WhisperLunea 🌙</h1>
+    <p>Each crystal whispers the feelings you couldn't put into words.<br>每一颗水晶，都是你未曾说出的心事低语。</p>
+  </div>
+
+  <div class="buttons">
+    <button class="btn" onclick="showSection('emotion')">🔮 今日情绪</button>
+    <button class="btn" onclick="showSection('dream')">🌙 月光气质</button>
+    <button class="btn" onclick="showSection('mbti')">🧠 疗愈人格</button>
+  </div>
+
+  <div id="emotion" class="section active">
+    <h2>🔮 今日情绪测一测</h2>
+    <p>这里将显示情绪测一测的题目（后续可填写内容）</p>
+  </div>
+
+  <div id="dream" class="section">
+    <h2>🌙 月光气质测一测</h2>
+    <p>这里将显示月光气质的题目（后续可填写内容）</p>
+  </div>
+
+  <div id="mbti" class="section">
+    <h2>🧠 疗愈人格测一测</h2>
+    <p>这里将显示 MBTI 类型的题目（后续可填写内容）</p>
+  </div>
+
+  <footer>
+    <h2>About WhisperLunea / 品牌简介</h2>
+    <p>WhisperLunea is a crystal jewelry brand created by Gracy Zhang, focusing on emotional healing and self-connection. Inspired by moonlight, mindfulness, and memory, each bracelet represents a story and a feeling.<br>
+    每串手链，都是情绪的低语，记录你当下的心境。</p>
+
+    <h2>Collections / 精选系列</h2>
+    <ul>
+      <li>Amethyst Calm – 平静焦虑</li>
+      <li>Rose Quartz Bloom – 爱与自我疗愈</li>
+      <li>Lunea Clear – 清澈专注，连接直觉</li>
+    </ul>
+
+    <h2>Find Your Crystal / 属于你的情绪水晶</h2>
+    <p>不确定你现在最需要哪种水晶能量？点击上方按钮，开启测一测体验。</p>
+
+    <h2>Contact / 联系我们</h2>
+    <p>Instagram: @whisperlunea<br>
+    小红书: WhisperLunea<br>
+    Email: whisperlunea@gmail.com</p>
+  </footer>
+</body>
+</html>
