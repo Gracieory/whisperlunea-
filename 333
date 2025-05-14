@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy 水晶穿搭建议 - WhisperLunea</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', serif;
+            background: linear-gradient(135deg, #fff7f5 0%, #fdf2f8 100%);
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .outfit-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(251, 113, 133, 0.1);
+        }
+
+        .title {
+            font-size: 2.4em;
+            background: linear-gradient(45deg, #f472b6, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .subtitle {
+            color: #fb7185;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .subtitle .en {
+            display: block;
+            color: #f472b6;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .outfit-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #fce7f3, #ffe4e6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #fb7185;
+        }
+
+        .style-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(251, 113, 133, 0.1);
+        }
+
+        .tip-card h3 {
+            color: #f472b6;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .tip-card .en {
+            color: #fb7185;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #f472b6, #fb7185);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 113, 133, 0.2);
+        }
+
+        .back-btn .en {
+            display: block;
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="outfit-container">
+                <h1 class="title">✨ Joy Crystal Style Guide ✨</h1>
+                <p class="subtitle">
+                    甜美活力，绽放你的光芒
+                    <span class="en">Sweet Energy, Let Your Light Shine</span>
+                </p>
+
+                <div class="outfit-image">
+                    [优雅甜美的穿搭示意图 / Elegant & Sweet Outfit Illustration]
+                </div>
+
+                <div class="style-tips">
+                    <div class="tip-card">
+                        <h3>🎨 色彩搭配</h3>
+                        <p>主色调：粉色、珊瑚橘、珍珠白</p>
+                        <p>点缀：金色、淡紫</p>
+                        <p class="en">Colors: Pink, Coral, Pearl White<br>Accents: Gold, Soft Purple</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <h3>👗 服装单品</h3>
+                        <p>蕾丝连衣裙、针织开衫</p>
+                        <p>百褶裙、丝绒上衣</p>
+                        <p class="en">Lace Dresses, Knit Cardigans<br>Pleated Skirts, Velvet Tops</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <h3>💎 水晶饰品</h3>
+                        <p>粉晶耳环、黄水晶手链</p>
+                        <p>月光石吊坠、紫晶戒指</p>
+                        <p class="en">Rose Quartz Earrings, Citrine Bracelet<br>Moonstone Pendant, Amethyst Ring</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <h3>👜 搭配技巧</h3>
+                        <p>层次叠搭、柔美褶皱</p>
+                        <p>蝴蝶结、珍珠装饰</p>
+                        <p class="en">Layered Styling, Soft Pleats<br>Bow Details, Pearl Accents</p>
+                    </div>
+                </div>
+
+                <a href="../results/joy.html" class="back-btn">
+                    返回水晶页面
+                    <span class="en">Back to Crystal Page</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
