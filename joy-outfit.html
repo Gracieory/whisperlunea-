@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy Crystal Style - WhisperLunea</title>
+    <style>
+        :root {
+            --primary-pink: #f472b6;
+            --secondary-pink: #fb7185;
+            --accent-pink: #fce7f3;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff7f5 0%, #fdf2f8 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-pink);
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(251, 113, 133, 0.1);
+        }
+
+        .outfit-card h3 {
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .outfit-section {
+            margin-top: 4rem;
+        }
+
+        .outfit-section h2 {
+            color: var(--secondary-pink);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .style-tips {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "🌸";
+            position: absolute;
+            left: 0;
+        }
+
+        .bilingual {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .en {
+            color: var(--text-color);
+        }
+
+        .cn {
+            color: var(--secondary-pink);
+        }
+
+        .crystal-tips {
+            background: linear-gradient(45deg, var(--accent-pink), white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 113, 133, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✨ Joy Crystal Style Guide ✨</h1>
+            <p class="subtitle">
+                <div class="bilingual">
+                    <span class="en">Sweet Energy, Let Your Light Shine</span>
+                    <span class="cn">甜美活力，绽放光芒</span>
+                </div>
+            </p>
+        </div>
+
+        <div class="outfit-grid">
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Color Palette</span>
+                        <span class="cn">色彩搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Main: Soft pink, coral, cream white</span>
+                    <span class="cn">主色：柔粉、珊瑚色、奶白色</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Accent: Gold, light purple</span>
+                    <span class="cn">点缀：金色、淡紫色</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Key Pieces</span>
+                        <span class="cn">核心单品</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Flowy dresses, lace tops</span>
+                    <span class="cn">飘逸连衣裙、蕾丝上衣</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Pleated skirts, knit cardigans</span>
+                    <span class="cn">百褶裙、针织开衫</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Accessories</span>
+                        <span class="cn">饰品搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Rose quartz jewelry, pearl details</span>
+                    <span class="cn">粉晶饰品、珍珠装饰</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Delicate bows, crystal accents</span>
+                    <span class="cn">精致蝴蝶结、水晶点缀</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="style-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Styling Tips</span>
+                    <span class="cn">穿搭技巧</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Layer soft textures for a romantic look</span>
+                        <span class="cn">叠搭柔软质地营造浪漫感</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Mix patterns with solid colors</span>
+                        <span class="cn">花纹与纯色搭配</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Add feminine details like ruffles</span>
+                        <span class="cn">添加荷叶边等甜美细节</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Balance sweet elements with clean lines</span>
+                        <span class="cn">甜美元素与简约线条平衡</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="crystal-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Crystal Styling</span>
+                    <span class="cn">水晶搭配</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Rose quartz pendant necklace</span>
+                        <span class="cn">粉晶吊坠项链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Crystal bracelets with pink tones</span>
+                        <span class="cn">粉色系水晶手链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Delicate crystal earrings</span>
+                        <span class="cn">精致水晶耳环</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../results/joy.html" class="back-btn">
+                <div class="bilingual">
+                    <span class="en">Back to Crystal Page</span>
+                    <span class="cn">返回水晶页面</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

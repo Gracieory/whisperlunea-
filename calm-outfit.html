@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calm Crystal Style - WhisperLunea</title>
+    <style>
+        :root {
+            --primary-purple: #a855f7;
+            --secondary-purple: #7c3aed;
+            --accent-purple: #f3e8ff;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-purple);
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+        }
+
+        .outfit-card h3 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .outfit-section {
+            margin-top: 4rem;
+        }
+
+        .outfit-section h2 {
+            color: var(--secondary-purple);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .style-tips {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "💜";
+            position: absolute;
+            left: 0;
+        }
+
+        .bilingual {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .en {
+            color: var(--text-color);
+        }
+
+        .cn {
+            color: var(--secondary-purple);
+        }
+
+        .crystal-tips {
+            background: linear-gradient(45deg, var(--accent-purple), white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✨ Calm Crystal Style Guide ✨</h1>
+            <p class="subtitle">
+                <div class="bilingual">
+                    <span class="en">Elegant Serenity, Inner Peace</span>
+                    <span class="cn">优雅宁静，内在平和</span>
+                </div>
+            </p>
+        </div>
+
+        <div class="outfit-grid">
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Color Palette</span>
+                        <span class="cn">色彩搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Main: Lavender, soft gray, ivory</span>
+                    <span class="cn">主色：薰衣草紫、柔灰、象牙白</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Accent: Silver, deep purple</span>
+                    <span class="cn">点缀：银色、深紫色</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Key Pieces</span>
+                        <span class="cn">核心单品</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Silk blouses, cashmere sweaters</span>
+                    <span class="cn">丝绸衬衫、羊绒毛衣</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Wide-leg pants, wrap dresses</span>
+                    <span class="cn">阔腿裤、裹身连衣裙</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Accessories</span>
+                        <span class="cn">饰品搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Amethyst jewelry, silver details</span>
+                    <span class="cn">紫水晶饰品、银饰细节</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Minimal designs, natural stones</span>
+                    <span class="cn">简约设计、天然宝石</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="style-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Styling Tips</span>
+                    <span class="cn">穿搭技巧</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Choose flowing, comfortable fabrics</span>
+                        <span class="cn">选择飘逸舒适的面料</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Focus on quality over quantity</span>
+                        <span class="cn">注重质量胜于数量</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Keep accessories minimal and elegant</span>
+                        <span class="cn">保持配饰简约优雅</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Layer with light, breathable pieces</span>
+                        <span class="cn">轻薄透气的层次搭配</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="crystal-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Crystal Styling</span>
+                    <span class="cn">水晶搭配</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Amethyst pendant necklace</span>
+                        <span class="cn">紫水晶吊坠项链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Moonstone and silver bracelet</span>
+                        <span class="cn">月光石配银手链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Simple crystal stud earrings</span>
+                        <span class="cn">简约水晶耳钉</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../results/calm.html" class="back-btn">
+                <div class="bilingual">
+                    <span class="en">Back to Crystal Page</span>
+                    <span class="cn">返回水晶页面</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

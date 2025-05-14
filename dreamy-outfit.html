@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamy Crystal Style - WhisperLunea</title>
+    <style>
+        :root {
+            --primary-blue: #60a5fa;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #dbeafe;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-blue);
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.1);
+        }
+
+        .outfit-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .outfit-section {
+            margin-top: 4rem;
+        }
+
+        .outfit-section h2 {
+            color: var(--secondary-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .style-tips {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "🌙";
+            position: absolute;
+            left: 0;
+        }
+
+        .bilingual {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .en {
+            color: var(--text-color);
+        }
+
+        .cn {
+            color: var(--secondary-blue);
+        }
+
+        .crystal-tips {
+            background: linear-gradient(45deg, var(--accent-blue), white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(96, 165, 250, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✨ Dreamy Crystal Style Guide ✨</h1>
+            <p class="subtitle">
+                <div class="bilingual">
+                    <span class="en">Ethereal Beauty, Mystical Grace</span>
+                    <span class="cn">空灵之美，神秘优雅</span>
+                </div>
+            </p>
+        </div>
+
+        <div class="outfit-grid">
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Color Palette</span>
+                        <span class="cn">色彩搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Main: Sky blue, misty gray, pearl white</span>
+                    <span class="cn">主色：天空蓝、薄雾灰、珍珠白</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Accent: Iridescent, moonlight silver</span>
+                    <span class="cn">点缀：虹彩光、月光银</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Key Pieces</span>
+                        <span class="cn">核心单品</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Flowing maxi dresses, tulle skirts</span>
+                    <span class="cn">飘逸长裙、纱裙</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Sheer blouses, draped cardigans</span>
+                    <span class="cn">透视衬衫、垂坠开衫</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Accessories</span>
+                        <span class="cn">饰品搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Moonstone jewelry, celestial motifs</span>
+                    <span class="cn">月光石饰品、星月图案</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Ethereal scarves, delicate chains</span>
+                    <span class="cn">空灵丝巾、精致链条</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="style-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Styling Tips</span>
+                    <span class="cn">穿搭技巧</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Layer sheer fabrics for depth</span>
+                        <span class="cn">叠搭透视面料制造层次</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Mix textures for visual interest</span>
+                        <span class="cn">混搭质地创造视觉趣味</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Add ethereal details like ruffles</span>
+                        <span class="cn">添加空灵细节如荷叶边</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Choose flowing silhouettes</span>
+                        <span class="cn">选择飘逸的廓形</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="crystal-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Crystal Styling</span>
+                    <span class="cn">水晶搭配</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Moonstone layered necklaces</span>
+                        <span class="cn">月光石多层项链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Crystal and pearl mix bracelets</span>
+                        <span class="cn">水晶珍珠混搭手链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Celestial-themed crystal rings</span>
+                        <span class="cn">星月主题水晶戒指</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../results/dreamy.html" class="back-btn">
+                <div class="bilingual">
+                    <span class="en">Back to Crystal Page</span>
+                    <span class="cn">返回水晶页面</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

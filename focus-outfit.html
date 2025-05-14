@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Crystal Style - WhisperLunea</title>
+    <style>
+        :root {
+            --primary-gray: #64748b;
+            --secondary-gray: #475569;
+            --accent-gray: #f1f5f9;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-gray), var(--secondary-gray));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-gray);
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(100, 116, 139, 0.1);
+        }
+
+        .outfit-card h3 {
+            color: var(--primary-gray);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .outfit-section {
+            margin-top: 4rem;
+        }
+
+        .outfit-section h2 {
+            color: var(--secondary-gray);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .style-tips {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .tips-list li::before {
+            content: "✧";
+            position: absolute;
+            left: 0;
+        }
+
+        .bilingual {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .en {
+            color: var(--text-color);
+        }
+
+        .cn {
+            color: var(--secondary-gray);
+        }
+
+        .crystal-tips {
+            background: linear-gradient(45deg, var(--accent-gray), white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-gray), var(--secondary-gray));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 116, 139, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">✨ Focus Crystal Style Guide ✨</h1>
+            <p class="subtitle">
+                <div class="bilingual">
+                    <span class="en">Modern Minimalism, Sharp Precision</span>
+                    <span class="cn">现代简约，精准锐利</span>
+                </div>
+            </p>
+        </div>
+
+        <div class="outfit-grid">
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Color Palette</span>
+                        <span class="cn">色彩搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Main: Silver gray, charcoal, white</span>
+                    <span class="cn">主色：银灰、炭灰、纯白</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Accent: Metallic, black</span>
+                    <span class="cn">点缀：金属色、纯黑</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Key Pieces</span>
+                        <span class="cn">核心单品</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Tailored blazers, structured pants</span>
+                    <span class="cn">修身西装、结构裤装</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Crisp shirts, minimalist dresses</span>
+                    <span class="cn">挺括衬衫、简约连衣裙</span>
+                </div>
+            </div>
+
+            <div class="outfit-card">
+                <h3>
+                    <div class="bilingual">
+                        <span class="en">Accessories</span>
+                        <span class="cn">饰品搭配</span>
+                    </div>
+                </h3>
+                <div class="bilingual">
+                    <span class="en">Clear quartz jewelry, geometric designs</span>
+                    <span class="cn">白水晶饰品、几何设计</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Modern watches, sleek metals</span>
+                    <span class="cn">现代腕表、简洁金属</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="style-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Styling Tips</span>
+                    <span class="cn">穿搭技巧</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Focus on clean lines and structure</span>
+                        <span class="cn">注重干净线条和结构感</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Choose quality materials</span>
+                        <span class="cn">选择优质面料</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Keep accessories minimal and precise</span>
+                        <span class="cn">保持配饰简约精准</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Balance comfort with professionalism</span>
+                        <span class="cn">平衡舒适度与专业感</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="crystal-tips">
+            <h2>
+                <div class="bilingual">
+                    <span class="en">Crystal Styling</span>
+                    <span class="cn">水晶搭配</span>
+                </div>
+            </h2>
+            <ul class="tips-list">
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Clear quartz point necklace</span>
+                        <span class="cn">白水晶尖晶项链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Minimal crystal bracelet</span>
+                        <span class="cn">简约水晶手链</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bilingual">
+                        <span class="en">Geometric crystal earrings</span>
+                        <span class="cn">几何水晶耳环</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../results/focus.html" class="back-btn">
+                <div class="bilingual">
+                    <span class="en">Back to Crystal Page</span>
+                    <span class="cn">返回水晶页面</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 
