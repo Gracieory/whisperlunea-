@@ -1,262 +1,207 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhisperLunea - Your Crystal Match 你的水晶匹配</title>
+    <title>Calm 平静水晶推荐 - WhisperLunea</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        :root {
-            --primary-color: #9b6b9e;
-            --secondary-color: #b69ac4;
-            --text-color: #4a4a4a;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Noto Serif SC', serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            min-height: 100vh;
-            padding: 2rem;
+            font-family: 'Helvetica Neue', serif;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            color: #444;
+            line-height: 1.8;
         }
 
         .result-container {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            animation: fadeIn 1s ease;
-        }
-
-        .crystal-header {
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 3rem;
         }
 
-        .crystal-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .crystal-title {
+            font-size: 2.8em;
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
-        .crystal-header p {
-            font-size: 1.2rem;
-            color: #666;
-            font-style: italic;
+        .crystal-subtitle {
+            color: #7c3aed;
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .crystal-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
+        .crystal-subtitle .en {
             display: block;
-            object-fit: cover;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            color: #a855f7;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 5px;
         }
 
         .crystal-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
-        .crystal-info h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .crystal-properties {
-            list-style: none;
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-
-        .crystal-properties li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .crystal-properties li::before {
-            content: "✨";
-            position: absolute;
-            left: 0;
-        }
-
-        .element-tags {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .element-tag {
-            display: inline-block;
-            padding: 0.3rem 1rem;
+        .info-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 30px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .element-water { background: #7fcdff; }
-        .element-metal { background: #c5c5c5; }
-
-        .back-btn {
-            display: block;
-            width: 200px;
-            margin: 2rem auto 0;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
         }
 
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .info-card h3 {
+            color: #7c3aed;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .info-card .en {
+            color: #a855f7;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .zodiac-message {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: #7c3aed;
+            font-size: 1.2em;
+        }
+
+        .zodiac-message .en {
+            display: block;
+            color: #a855f7;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .outfit-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 48px;
+            background: linear-gradient(45deg, #a855f7, #7c3aed);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .outfit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .outfit-btn .en {
+            display: block;
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="result-container">
-        <div class="crystal-header">
-            <h1>Amethyst 紫水晶 💜</h1>
-            <p>The Crystal of Peace and Wisdom<br>平静与智慧的能量水晶</p>
-        </div>
+    <div class="container">
+        <div class="glass-card">
+            <div class="result-container">
+                <h1 class="crystal-title">✨ Calm Crystal 平静水晶 ✨</h1>
+                <p class="crystal-subtitle">
+                    让宁静与智慧在心中流淌
+                    <span class="en">Let tranquility and wisdom flow within</span>
+                </p>
 
-        <img src="https://via.placeholder.com/200x200.jpg?text=Amethyst" alt="Amethyst" class="crystal-img">
+                <div class="crystal-info">
+                    <div class="info-card">
+                        <h3>💎 推荐水晶</h3>
+                        <p>紫水晶 Amethyst</p>
+                        <p>月长石 Moonstone</p>
+                        <p class="en">Crystals for peace and wisdom</p>
+                    </div>
 
-        <div class="crystal-info">
-            <h2>Your Crystal Match 你的水晶匹配</h2>
-            <div class="element-tags">
-                <span class="element-tag element-water">水相 Water</span>
-                <span class="element-tag element-metal">金相 Metal</span>
+                    <div class="info-card">
+                        <h3>⭐️ 适合星座</h3>
+                        <p>天秤座 Libra</p>
+                        <p>双鱼座 Pisces</p>
+                        <p class="en">Signs that resonate with calm energy</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌸 能量特质</h3>
+                        <p>心灵平静 Mental Peace</p>
+                        <p>智慧洞察 Wisdom Insight</p>
+                        <p class="en">Nurturing peace and clarity</p>
+                    </div>
+                </div>
+
+                <div id="zodiac-message" class="zodiac-message">
+                    正在加载你的个性化星座建议...
+                    <span class="en">Loading your personalized zodiac guidance...</span>
+                </div>
+
+                <a href="../outfits/calm-outfit.html" class="outfit-btn">
+                    👗 查看穿搭建议
+                    <span class="en">Explore Style Guide</span>
+                </a>
             </div>
-            <p>Based on your emotional resonance, Amethyst is your perfect crystal companion.<br>
-            根据你的情感共鸣，紫水晶是最适合你的水晶伴侣。</p>
         </div>
-
-        <div class="crystal-info">
-            <h2>Key Benefits 主要功效</h2>
-            <ul class="crystal-properties">
-                <li>Promotes inner peace and spiritual growth<br>
-                促进内心平静与灵性成长</li>
-                <li>Enhances meditation and mindfulness<br>
-                增强冥想效果与正念练习</li>
-                <li>Calms the mind and reduces anxiety<br>
-                安抚心神，减轻焦虑</li>
-                <li>Improves sleep quality and dream clarity<br>
-                改善睡眠质量，增加梦境清晰度</li>
-            </ul>
-        </div>
-
-        <div class="crystal-info">
-            <h2>Your Zodiac Harmony 星座调和</h2>
-            <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
-        </div>
-
-        <div class="crystal-info">
-            <h2>Usage Recommendations 使用建议</h2>
-            <ul class="crystal-properties">
-                <li>Place under your pillow for peaceful sleep<br>
-                放在枕头下方，获得安眠</li>
-                <li>Meditate with the crystal for spiritual connection<br>
-                冥想时使用，增强灵性连接</li>
-                <li>Keep in your workspace for mental clarity<br>
-                放在工作区域，保持思维清晰</li>
-                <li>Carry with you during stressful situations<br>
-                压力情况下随身携带</li>
-            </ul>
-        </div>
-
-        <a href="../index.html" class="back-btn">← Back to Home 返回首页</a>
     </div>
 
     <script>
-        window.onload = function() {
-            const zodiac = localStorage.getItem('userZodiac');
-            const zodiacInfo = {
-                aries: {
-                    en: "For Aries, Amethyst helps calm your fiery energy and enhance spiritual awareness",
-                    zh: "紫水晶帮助白羊座的你平衡火热能量，提升灵性意识"
+        document.addEventListener('DOMContentLoaded', () => {
+            const zodiacSign = localStorage.getItem('zodiacSign');
+            const zodiacMessage = document.getElementById('zodiac-message');
+            
+            const messages = {
+                fire: {
+                    zh: "作为充满活力的火象星座，平静水晶能帮助你在激情中找到内心的宁静～",
+                    en: "As a vibrant Fire sign, Calm crystals help you find inner peace within your passion~"
                 },
-                taurus: {
-                    en: "Amethyst helps Taurus find peace through spiritual connection",
-                    zh: "紫水晶帮助金牛座的你通过灵性连接找到内心平静"
+                earth: {
+                    zh: "作为稳重的土象星座，平静水晶能为你带来更深层的智慧洞察～",
+                    en: "As a grounded Earth sign, Calm crystals bring deeper wisdom insights to your life~"
                 },
-                gemini: {
-                    en: "For Gemini, Amethyst brings mental clarity and emotional stability",
-                    zh: "紫水晶为双子座的你带来思维清晰和情感稳定"
+                air: {
+                    zh: "作为灵动的风象星座，平静水晶能让你的思维更加清晰有序～",
+                    en: "As a free-spirited Air sign, Calm crystals bring clarity and order to your thoughts~"
                 },
-                cancer: {
-                    en: "Amethyst helps Cancer balance sensitivity with inner strength",
-                    zh: "紫水晶帮助巨蟹座的你平衡敏感度与内在力量"
-                },
-                leo: {
-                    en: "For Leo, Amethyst promotes humility and spiritual wisdom",
-                    zh: "紫水晶培养狮子座的你的谦逊品质与灵性智慧"
-                },
-                virgo: {
-                    en: "Amethyst helps Virgo release perfectionism and find peace",
-                    zh: "紫水晶帮助处女座的你释放完美主义，找到平静"
-                },
-                libra: {
-                    en: "For Libra, Amethyst deepens meditation and spiritual balance",
-                    zh: "紫水晶加深天秤座的你的冥想体验与灵性平衡"
-                },
-                scorpio: {
-                    en: "Amethyst helps Scorpio transform intensity into spiritual insight",
-                    zh: "紫水晶帮助天蝎座的你将强烈感受转化为灵性洞察"
-                },
-                sagittarius: {
-                    en: "For Sagittarius, Amethyst grounds spiritual exploration",
-                    zh: "紫水晶为射手座的你的灵性探索提供稳定基础"
-                },
-                capricorn: {
-                    en: "Amethyst helps Capricorn balance material and spiritual goals",
-                    zh: "紫水晶帮助摩羯座的你平衡物质与精神追求"
-                },
-                aquarius: {
-                    en: "For Aquarius, Amethyst enhances intuition and spiritual connection",
-                    zh: "紫水晶增强水瓶座的你的直觉与灵性连接"
-                },
-                pisces: {
-                    en: "Amethyst amplifies Pisces's natural spiritual gifts",
-                    zh: "紫水晶放大双鱼座的你天生的灵性天赋"
+                water: {
+                    zh: "作为感性的水象星座，平静水晶能让你的情感更加平和安宁～",
+                    en: "As an intuitive Water sign, Calm crystals bring serenity to your emotions~"
                 }
             };
-            
-            if (zodiac && zodiacInfo[zodiac]) {
-                document.getElementById('zodiacText').innerHTML = 
-                    `${zodiacInfo[zodiac].en}<br>${zodiacInfo[zodiac].zh}`;
-            } else {
-                document.getElementById('zodiacText').innerHTML = 
-                    "Zodiac sign not found<br>未找到星座信息";
-            }
-        };
+
+            const defaultMessage = {
+                zh: "平静水晶能为你的生活带来宁静祥和的能量～",
+                en: "Calm crystals will bring peaceful and harmonious energy to your life~"
+            };
+
+            const message = messages[zodiacSign] || defaultMessage;
+            zodiacMessage.innerHTML = `
+                ${message.zh}
+                <span class="en">${message.en}</span>
+            `;
+        });
     </script>
 </body>
 </html> 

@@ -1,316 +1,435 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhisperLunea 🌙 - Crystal Quiz</title>
+    <title>Crystal Quiz - WhisperLunea</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --primary-color: #9b6b9e;
-            --secondary-color: #b69ac4;
-            --accent-color: #ffd1dc;
-            --text-color: #4a4a4a;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Noto Serif SC', serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
+            background: linear-gradient(135deg, #fdf2f8 0%, #e0f2fe 100%);
         }
 
         .quiz-container {
             max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            animation: fadeIn 1s ease;
-        }
-
-        .quiz-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .quiz-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .quiz-header p {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .question {
-            margin-bottom: 2.5rem;
-            display: none;
-        }
-
-        .question.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .question h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .options {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .option {
-            padding: 1rem;
-            background: white;
-            border: 2px solid var(--secondary-color);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .option:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .option.selected {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .nav-btn {
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .progress-bar {
-            height: 6px;
-            background: #eee;
-            border-radius: 3px;
-            margin: 2rem 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 40px;
             overflow: hidden;
         }
 
         .progress {
+            width: 0%;
             height: 100%;
-            background: var(--accent-color);
-            width: 0;
-            transition: width 0.3s ease;
+            background: linear-gradient(45deg, #f9a8d4, #93c5fd);
+            border-radius: 10px;
+            transition: width 0.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .error-message {
-            color: #ff6b6b;
+        .question {
             text-align: center;
-            margin-top: 1rem;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .question.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .question h2 {
+            font-size: 1.8em;
+            color: #6366f1;
+            margin-bottom: 15px;
+        }
+
+        .question .en {
+            color: #818cf8;
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .option h3 {
+            color: #6366f1;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .option .en {
+            color: #818cf8;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .zodiac-selection {
             display: none;
+            text-align: center;
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .zodiac-selection.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .zodiac-selection h2 {
+            font-size: 1.8em;
+            color: #6366f1;
+            margin-bottom: 15px;
+        }
+
+        .zodiac-selection .en {
+            color: #818cf8;
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .zodiac-option {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .zodiac-option:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .zodiac-option.selected {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: #6366f1;
+        }
+
+        .zodiac-option h3 {
+            color: #6366f1;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .zodiac-option .en {
+            color: #818cf8;
+            font-style: italic;
+            font-size: 0.8em;
+        }
+
+        .result-btn {
+            display: none;
+            margin: 40px auto 0;
+            padding: 18px 48px;
+            background: linear-gradient(45deg, #f9a8d4, #93c5fd);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .result-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .result-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <div class="quiz-header">
-            <h1>✨ Find Your Crystal 寻找你的水晶 ✨</h1>
-            <p>Answer these questions to discover your perfect crystal match<br>
-            回答这些问题，找到最适合你的水晶</p>
-        </div>
+    <div class="container">
+        <div class="glass-card">
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
 
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-
-        <div class="question active" data-question="1">
-            <h2>1. 最近你的情绪最接近哪种？<br>How have you been feeling lately?</h2>
-            <div class="options">
-                <div class="option" data-value="anxious">焦虑不安<br>Anxious and unsettled</div>
-                <div class="option" data-value="sad">情绪低落<br>Low and emotional</div>
-                <div class="option" data-value="confused">思绪迷乱<br>Confused and scattered</div>
+                <div id="questions"></div>
+                <div id="zodiac-selection" class="zodiac-selection">
+                    <h2>✨ 选择你的星座 ✨</h2>
+                    <div class="en">Choose Your Zodiac Sign</div>
+                    <div class="zodiac-grid">
+                        <div class="zodiac-option" onclick="selectZodiac('fire', '白羊座', 'Aries', this)">
+                            <h3>♈️ 白羊座</h3>
+                            <div class="en">Aries</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('earth', '金牛座', 'Taurus', this)">
+                            <h3>♉️ 金牛座</h3>
+                            <div class="en">Taurus</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('air', '双子座', 'Gemini', this)">
+                            <h3>♊️ 双子座</h3>
+                            <div class="en">Gemini</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('water', '巨蟹座', 'Cancer', this)">
+                            <h3>♋️ 巨蟹座</h3>
+                            <div class="en">Cancer</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('fire', '狮子座', 'Leo', this)">
+                            <h3>♌️ 狮子座</h3>
+                            <div class="en">Leo</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('earth', '处女座', 'Virgo', this)">
+                            <h3>♍️ 处女座</h3>
+                            <div class="en">Virgo</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('air', '天秤座', 'Libra', this)">
+                            <h3>♎️ 天秤座</h3>
+                            <div class="en">Libra</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('water', '天蝎座', 'Scorpio', this)">
+                            <h3>♏️ 天蝎座</h3>
+                            <div class="en">Scorpio</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('fire', '射手座', 'Sagittarius', this)">
+                            <h3>♐️ 射手座</h3>
+                            <div class="en">Sagittarius</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('earth', '摩羯座', 'Capricorn', this)">
+                            <h3>♑️ 摩羯座</h3>
+                            <div class="en">Capricorn</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('air', '水瓶座', 'Aquarius', this)">
+                            <h3>♒️ 水瓶座</h3>
+                            <div class="en">Aquarius</div>
+                        </div>
+                        <div class="zodiac-option" onclick="selectZodiac('water', '双鱼座', 'Pisces', this)">
+                            <h3>♓️ 双鱼座</h3>
+                            <div class="en">Pisces</div>
+                        </div>
+                    </div>
+                </div>
+                <button id="result-btn" class="result-btn" onclick="showResult()" disabled>✨ 查看你的水晶 ✨<br><span style="font-size: 0.8em; opacity: 0.9">Discover Your Crystal</span></button>
             </div>
-        </div>
-
-        <div class="question" data-question="2">
-            <h2>2. 你目前最需要的能量是？<br>What energy do you need most right now?</h2>
-            <div class="options">
-                <div class="option" data-value="calm">稳定平静<br>Stability and peace</div>
-                <div class="option" data-value="healing">情感疗愈<br>Emotional healing</div>
-                <div class="option" data-value="focus">清晰专注<br>Clarity and focus</div>
-            </div>
-        </div>
-
-        <div class="question" data-question="3">
-            <h2>3. 你希望拥有的气场？<br>What aura would you like to have?</h2>
-            <div class="options">
-                <div class="option" data-value="gentle">温柔宁静<br>Gentle and peaceful</div>
-                <div class="option" data-value="balanced">柔软坚定<br>Soft yet strong</div>
-                <div class="option" data-value="pure">通透纯净<br>Pure and clear</div>
-            </div>
-        </div>
-
-        <div class="question" data-question="4">
-            <h2>4. 你的星座是？<br>What's your zodiac sign?</h2>
-            <div class="options">
-                <div class="option" data-value="aries">白羊座 Aries</div>
-                <div class="option" data-value="taurus">金牛座 Taurus</div>
-                <div class="option" data-value="gemini">双子座 Gemini</div>
-                <div class="option" data-value="cancer">巨蟹座 Cancer</div>
-                <div class="option" data-value="leo">狮子座 Leo</div>
-                <div class="option" data-value="virgo">处女座 Virgo</div>
-                <div class="option" data-value="libra">天秤座 Libra</div>
-                <div class="option" data-value="scorpio">天蝎座 Scorpio</div>
-                <div class="option" data-value="sagittarius">射手座 Sagittarius</div>
-                <div class="option" data-value="capricorn">摩羯座 Capricorn</div>
-                <div class="option" data-value="aquarius">水瓶座 Aquarius</div>
-                <div class="option" data-value="pisces">双鱼座 Pisces</div>
-            </div>
-        </div>
-
-        <div class="error-message">Please select an option before continuing<br>请先选择一个选项再继续</div>
-
-        <div class="navigation">
-            <button class="nav-btn" id="prevBtn" disabled>← Previous 上一题</button>
-            <button class="nav-btn" id="nextBtn">Next 下一题 →</button>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const questions = document.querySelectorAll('.question');
-            const progressBar = document.querySelector('.progress');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const errorMessage = document.querySelector('.error-message');
+        const questions = [
+            {
+                question: "✨ 当你需要放松时，最想做什么？",
+                questionEn: "What's your ideal way to unwind?",
+                options: [
+                    {
+                        text: "🌟 看星星，感受宇宙能量",
+                        textEn: "Stargazing, connecting with cosmic energy"
+                    },
+                    {
+                        text: "🛁 泡个温暖的香薰浴",
+                        textEn: "Taking a warm aromatherapy bath"
+                    },
+                    {
+                        text: "🌙 月光下散步冥想",
+                        textEn: "Moonlit walks and meditation"
+                    },
+                    {
+                        text: "✨ 整理空间，让思维更清晰",
+                        textEn: "Organizing space for mental clarity"
+                    }
+                ]
+            },
+            {
+                question: "🌈 你最向往的自然风景是？",
+                questionEn: "Which natural landscape resonates with your soul?",
+                options: [
+                    {
+                        text: "🌅 粉色的晚霞",
+                        textEn: "Rose-tinted sunset skies"
+                    },
+                    {
+                        text: "🌾 紫色薰衣草花田",
+                        textEn: "Fields of swaying lavender"
+                    },
+                    {
+                        text: "🌕 皎洁的满月",
+                        textEn: "The luminous full moon"
+                    },
+                    {
+                        text: "💧 清澈的山泉",
+                        textEn: "Crystal-clear mountain springs"
+                    }
+                ]
+            },
+            {
+                question: "💝 你希望在生活中培养什么品质？",
+                questionEn: "What quality do you wish to nurture in your life?",
+                options: [
+                    {
+                        text: "💗 温柔的爱与同理心",
+                        textEn: "Gentle love and empathy"
+                    },
+                    {
+                        text: "🕊️ 内在的平静与智慧",
+                        textEn: "Inner peace and wisdom"
+                    },
+                    {
+                        text: "✨ 直觉力与创造力",
+                        textEn: "Intuition and creativity"
+                    },
+                    {
+                        text: "💫 专注力与清晰度",
+                        textEn: "Focus and mental clarity"
+                    }
+                ]
+            },
+            {
+                question: "🌅 你最喜欢哪个时刻？",
+                questionEn: "Which moment of the day speaks to your heart?",
+                options: [
+                    {
+                        text: "🌄 温暖的清晨阳光",
+                        textEn: "Gentle morning sunlight"
+                    },
+                    {
+                        text: "🌆 宁静的黄昏时分",
+                        textEn: "Tranquil twilight hours"
+                    },
+                    {
+                        text: "🌙 梦幻的月夜",
+                        textEn: "Mystical moonlit night"
+                    },
+                    {
+                        text: "🌅 清新的破晓时分",
+                        textEn: "Crisp dawn moments"
+                    }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = [];
+        let selectedZodiac = null;
+
+        function showQuestion(index) {
+            const questionsDiv = document.getElementById('questions');
+            const question = questions[index];
             
-            let currentQuestion = 0;
-            const answers = {};
+            const questionHtml = `
+                <div class="question active">
+                    <h2>${question.question}</h2>
+                    <div class="en">${question.questionEn}</div>
+                    <div class="options">
+                        ${question.options.map((option, i) => `
+                            <div class="option" onclick="selectOption(${i})">
+                                <h3>${option.text}</h3>
+                                <div class="en">${option.textEn}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            questionsDiv.innerHTML = questionHtml;
+            updateProgress();
+        }
 
-            function updateProgress() {
-                const progress = ((currentQuestion + 1) / questions.length) * 100;
-                progressBar.style.width = `${progress}%`;
+        function selectOption(optionIndex) {
+            answers.push(optionIndex);
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                document.querySelector('.question').style.display = 'none';
+                const zodiacSelection = document.getElementById('zodiac-selection');
+                zodiacSelection.style.display = 'block';
+                setTimeout(() => zodiacSelection.classList.add('active'), 50);
             }
+        }
 
-            function showQuestion(index) {
-                questions.forEach(q => {
-                    q.classList.remove('active');
-                });
-                questions[index].classList.add('active');
-                
-                prevBtn.disabled = index === 0;
-                nextBtn.textContent = index === questions.length - 1 ? 'See Results 查看结果 →' : 'Next 下一题 →';
-                
-                updateProgress();
-            }
-
-            function selectOption(optionElement) {
-                const questionElement = optionElement.closest('.question');
-                const questionNumber = questionElement.dataset.question;
-                
-                // Deselect all options in this question
-                questionElement.querySelectorAll('.option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                // Select clicked option
-                optionElement.classList.add('selected');
-                answers[questionNumber] = optionElement.dataset.value;
-                
-                errorMessage.style.display = 'none';
-            }
-
-            function determineResult() {
-                // Store zodiac sign
-                localStorage.setItem('userZodiac', answers['4']);
-                
-                // Simple logic to determine crystal type
-                if (answers['1'] === 'anxious' || answers['2'] === 'calm') {
-                    return 'calm.html'; // Amethyst
-                } else if (answers['1'] === 'sad' || answers['2'] === 'healing') {
-                    return 'joy.html'; // Rose Quartz
-                } else if (answers['3'] === 'pure' || answers['2'] === 'focus') {
-                    return 'focus.html'; // Clear Quartz
-                } else {
-                    return 'dreamy.html'; // Moonstone
-                }
-            }
-
-            // Event listeners
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', () => selectOption(option));
+        function selectZodiac(element, name, nameEn, el) {
+            selectedZodiac = element;
+            // 移除其他选项的选中状态
+            document.querySelectorAll('.zodiac-option').forEach(option => {
+                option.classList.remove('selected');
             });
+            // 添加当前选项的选中状态
+            el.classList.add('selected');
+            // 启用结果按钮
+            document.getElementById('result-btn').disabled = false;
+            document.getElementById('result-btn').style.display = 'block';
+            // 存储星座信息
+            localStorage.setItem('zodiacSign', element);
+        }
 
-            prevBtn.addEventListener('click', () => {
-                if (currentQuestion > 0) {
-                    currentQuestion--;
-                    showQuestion(currentQuestion);
-                }
-            });
+        function updateProgress() {
+            const progress = (currentQuestion / questions.length) * 100;
+            document.querySelector('.progress').style.width = `${progress}%`;
+        }
 
-            nextBtn.addEventListener('click', () => {
-                const currentQuestionElement = questions[currentQuestion];
-                const selectedOption = currentQuestionElement.querySelector('.option.selected');
-                
-                if (!selectedOption) {
-                    errorMessage.style.display = 'block';
-                    return;
-                }
-                
-                if (currentQuestion < questions.length - 1) {
-                    currentQuestion++;
-                    showQuestion(currentQuestion);
-                } else {
-                    // Show results
-                    window.location.href = 'results/' + determineResult();
-                }
-            });
+        function showResult() {
+            if (!selectedZodiac) {
+                alert('请先选择你的星座！\nPlease select your zodiac sign first!');
+                return;
+            }
 
-            // Initialize
-            showQuestion(0);
-        });
+            // 计算结果倾向
+            const counts = answers.reduce((acc, val) => {
+                acc[val] = (acc[val] || 0) + 1;
+                return acc;
+            }, {});
+            
+            const maxCount = Math.max(...Object.values(counts));
+            const result = Object.keys(counts).find(key => counts[key] === maxCount);
+            
+            // 根据结果跳转到对应的水晶页面
+            const pages = ['joy.html', 'calm.html', 'dreamy.html', 'focus.html'];
+            window.location.href = `results/${pages[result]}`;
+        }
+
+        // 初始化显示第一个问题
+        showQuestion(0);
     </script>
 </body>
 </html> 

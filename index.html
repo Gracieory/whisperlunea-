@@ -1,86 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhisperLunea 🌙 - Crystal Personality Quiz</title>
-  <style>
-        :root {
-            --primary-color: #e2a9e5;
-            --secondary-color: #b8e1ff;
-            --accent-color: #ffd1dc;
-            --text-color: #4a4a4a;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            
-            /* Result page colors */
-            --joy-primary: #ffb7c5;
-            --joy-secondary: #ffd1dc;
-            --calm-primary: #9b6b9e;
-            --calm-secondary: #b69ac4;
-            --focus-primary: #a8d8ea;
-            --focus-secondary: #b8e1ff;
-            --dreamy-primary: #c5a3ff;
-            --dreamy-secondary: #d4b8ff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-    body {
-            font-family: 'Noto Serif SC', serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+    <title>WhisperLunea - 水晶个性测试</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #ede9fe 100%);
+            color: #444;
+            line-height: 1.8;
             min-height: 100vh;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             padding: 2rem;
         }
 
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .section.active {
-            display: block;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: white;
+        .title {
+            font-size: 3em;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px var(--shadow-color);
+            background: linear-gradient(45deg, #f472b6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 2rem;
-            font-style: italic;
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 3rem;
+            color: #666;
         }
 
-        .crystal-cards {
+        .crystal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -88,378 +47,160 @@
         }
 
         .crystal-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 15px;
-      text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
         .crystal-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .crystal-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        .crystal-card h2 {
+            font-size: 1.8em;
             margin-bottom: 1rem;
-            object-fit: cover;
+            background: linear-gradient(45deg, #f472b6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .crystal-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .crystal-info {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+        .crystal-card p {
+            margin: 1rem 0;
             color: #666;
         }
 
-        .element-tag {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin: 0.2rem;
-            color: white;
+        .crystal-card .elements {
+            color: #888;
+            font-style: italic;
+            margin: 1rem 0;
         }
 
-        .element-water { background: #7fcdff; }
-        .element-fire { background: #ff9999; }
-        .element-earth { background: #97c1a9; }
-        .element-metal { background: #c5c5c5; }
-        .element-wood { background: #98d698; }
+        .crystal-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
 
-        .start-quiz {
-      display: inline-block;
+        .crystal-card li {
+            margin: 0.5rem 0;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        .crystal-card li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .start-btn {
+            display: inline-block;
+            margin-top: 2rem;
             padding: 1rem 3rem;
-            font-size: 1.2rem;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            background: linear-gradient(45deg, #f472b6, #a855f7);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            transition: all 0.3s ease;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            cursor: pointer;
-            border: none;
-        }
-
-        .start-quiz:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--shadow-color);
-        }
-
-        .quiz-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-        }
-
-        .question {
-            display: none;
-        }
-
-        .question.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .options {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .option {
-            padding: 1rem;
-            background: white;
-            border: 2px solid var(--secondary-color);
-            border-radius: 10px;
-            cursor: pointer;
+            font-size: 1.2em;
             transition: all 0.3s ease;
         }
 
-        .option:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .option.selected {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: #eee;
-            border-radius: 3px;
-            margin: 2rem 0;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: var(--accent-color);
-            width: 0;
-            transition: width 0.3s ease;
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .nav-btn {
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-      color: white;
-      border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .social-links {
-            text-align: center;
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
         .social-links a {
-            color: white;
-      text-decoration: none;
             margin: 0 1rem;
-            font-size: 1.1rem;
+            color: #666;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            color: #f472b6;
         }
 
-        /* Add result page styles */
-        .result-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            animation: fadeIn 1s ease;
-            display: none;
-        }
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+            }
 
-        .result-container.active {
-            display: block;
-        }
+            .subtitle {
+                font-size: 1.2em;
+            }
 
-        .crystal-header {
-            text-align: center;
-            margin-bottom: 3rem;
+            .crystal-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
-        .crystal-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Result specific styles */
-        .result-joy { --primary-color: var(--joy-primary); --secondary-color: var(--joy-secondary); }
-        .result-calm { --primary-color: var(--calm-primary); --secondary-color: var(--calm-secondary); }
-        .result-focus { --primary-color: var(--focus-primary); --secondary-color: var(--focus-secondary); }
-        .result-dreamy { --primary-color: var(--dreamy-primary); --secondary-color: var(--dreamy-secondary); }
-  </style>
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Home Section -->
-        <section class="section active" id="home">
-            <div class="hero">
-  <h1>WhisperLunea 🌙</h1>
-                <p>Discover Your Crystal Personality<br>探索你的水晶个性</p>
-                <button class="start-quiz" onclick="startQuiz()">✨ Start Quiz 开始测试 ✨</button>
+        <h1 class="title">WhisperLunea 🌙</h1>
+        <p class="subtitle">
+            Discover Your Crystal Personality<br>
+            探索你的水晶个性
+        </p>
+
+        <a href="quiz.html" class="start-btn">
+            ✨ Start Quiz 开始测试 ✨
+        </a>
+
+        <div class="crystal-grid">
+            <div class="crystal-card">
+                <h2>Rose Quartz 玫瑰晶 💗</h2>
+                <p>The stone of love and joy<br>爱与喜悦之石</p>
+                <p class="elements">水相 Water 土相 Earth</p>
+                <ul>
+                    <li>✨ 增进人际关系</li>
+                    <li>💕 助力桃花姻缘</li>
+                    <li>🌟 疗愈情感创伤</li>
+                </ul>
             </div>
 
-            <div class="crystal-cards">
-                <div class="crystal-card">
-                    <img src="https://via.placeholder.com/150x150.jpg?text=Rose+Quartz" alt="Rose Quartz">
-                    <h3>Rose Quartz 玫瑰晶 💗</h3>
-                    <p>The stone of love and joy<br>爱与喜悦之石</p>
-                    <div class="crystal-info">
-                        <span class="element-tag element-water">水相 Water</span>
-                        <span class="element-tag element-earth">土相 Earth</span>
-                        <p>✨ 增进人际关系<br>
-                        💕 助力桃花姻缘<br>
-                        🌟 疗愈情感创伤</p>
-                    </div>
-                </div>
-                <div class="crystal-card">
-                    <img src="https://via.placeholder.com/150x150.jpg?text=Amethyst" alt="Amethyst">
-                    <h3>Amethyst 紫水晶 💜</h3>
-                    <p>The stone of peace and wisdom<br>平静与智慧之石</p>
-                    <div class="crystal-info">
-                        <span class="element-tag element-water">水相 Water</span>
-                        <span class="element-tag element-metal">金相 Metal</span>
-                        <p>🌙 改善睡眠质量<br>
-                        🧘‍♀️ 增强冥想效果<br>
-                        ✨ 提升精神力量</p>
-                    </div>
-                </div>
-                <div class="crystal-card">
-                    <img src="https://via.placeholder.com/150x150.jpg?text=Moonstone" alt="Moonstone">
-                    <h3>Moonstone 月光石 🌙</h3>
-                    <p>The stone of dreams and intuition<br>梦境与直觉之石</p>
-                    <div class="crystal-info">
-                        <span class="element-tag element-water">水相 Water</span>
-                        <span class="element-tag element-wood">木相 Wood</span>
-                        <p>🌟 增强直觉能力<br>
-                        💫 激发创意灵感<br>
-                        ✨ 平衡情绪波动</p>
-                    </div>
-                </div>
-                <div class="crystal-card">
-                    <img src="https://via.placeholder.com/150x150.jpg?text=Clear+Quartz" alt="Clear Quartz">
-                    <h3>Clear Quartz 白水晶 ✨</h3>
-                    <p>The stone of clarity and focus<br>清晰与专注之石</p>
-                    <div class="crystal-info">
-                        <span class="element-tag element-metal">金相 Metal</span>
-                        <span class="element-tag element-fire">火相 Fire</span>
-                        <p>💼 提升工作效率<br>
-                        🎯 增强目标专注<br>
-                        ⚡ 激活潜在能量</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quiz Section -->
-        <section class="section" id="quiz">
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <h1>✨ Find Your Crystal 寻找你的水晶 ✨</h1>
-                    <p>Answer these questions to discover your perfect crystal match<br>
-                    回答这些问题，找到最适合你的水晶</p>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-
-                <div class="question active" data-question="1">
-                    <h2>1. 最近你的情绪最接近哪种？<br>How have you been feeling lately? 🌈</h2>
-                    <div class="options">
-                        <div class="option" data-value="anxious">焦虑不安 😰<br>Anxious and unsettled</div>
-                        <div class="option" data-value="sad">情绪低落 😢<br>Low and emotional</div>
-                        <div class="option" data-value="confused">思绪迷乱 😵<br>Confused and scattered</div>
-                    </div>
-                </div>
-
-                <div class="question" data-question="2">
-                    <h2>2. 你目前最需要的能量是？<br>What energy do you need most right now? ✨</h2>
-                    <div class="options">
-                        <div class="option" data-value="calm">稳定平静 🧘‍♀️<br>Stability and peace</div>
-                        <div class="option" data-value="healing">情感疗愈 💗<br>Emotional healing</div>
-                        <div class="option" data-value="focus">清晰专注 🎯<br>Clarity and focus</div>
-                    </div>
-                </div>
-
-                <div class="question" data-question="3">
-                    <h2>3. 你最希望改善的生活领域？<br>Which area of life do you want to improve? 🌟</h2>
-                    <div class="options">
-                        <div class="option" data-value="love">感情运势 💕<br>Love & Relationships</div>
-                        <div class="option" data-value="career">事业发展 💼<br>Career & Success</div>
-                        <div class="option" data-value="health">身心健康 🌿<br>Health & Wellness</div>
-                    </div>
-                </div>
-
-                <div class="question" data-question="4">
-                    <h2>4. 你的星座是？<br>What's your zodiac sign? ⭐</h2>
-                    <div class="options zodiac-grid">
-                        <div class="option" data-value="aries">白羊座 ♈<br>Aries</div>
-                        <div class="option" data-value="taurus">金牛座 ♉<br>Taurus</div>
-                        <div class="option" data-value="gemini">双子座 ♊<br>Gemini</div>
-                        <div class="option" data-value="cancer">巨蟹座 ♋<br>Cancer</div>
-                        <div class="option" data-value="leo">狮子座 ♌<br>Leo</div>
-                        <div class="option" data-value="virgo">处女座 ♍<br>Virgo</div>
-                        <div class="option" data-value="libra">天秤座 ♎<br>Libra</div>
-                        <div class="option" data-value="scorpio">天蝎座 ♏<br>Scorpio</div>
-                        <div class="option" data-value="sagittarius">射手座 ♐<br>Sagittarius</div>
-                        <div class="option" data-value="capricorn">摩羯座 ♑<br>Capricorn</div>
-                        <div class="option" data-value="aquarius">水瓶座 ♒<br>Aquarius</div>
-                        <div class="option" data-value="pisces">双鱼座 ♓<br>Pisces</div>
-                    </div>
-                </div>
-
-                <div class="navigation">
-                    <button class="nav-btn" id="prevBtn" disabled>← Previous 上一题</button>
-                    <button class="nav-btn" id="nextBtn">Next 下一题 →</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Result sections -->
-        <section class="section" id="result">
-            <!-- Joy Result (Rose Quartz) -->
-            <div class="result-container result-joy" id="joy-result">
-                <div class="crystal-header">
-                    <h1>Rose Quartz 玫瑰晶 💗</h1>
-                    <p>The Crystal of Love and Joy<br>爱与喜悦的能量水晶</p>
-                </div>
-                <!-- Joy content -->
+            <div class="crystal-card">
+                <h2>Amethyst 紫水晶 💜</h2>
+                <p>The stone of peace and wisdom<br>平静与智慧之石</p>
+                <p class="elements">水相 Water 金相 Metal</p>
+                <ul>
+                    <li>🌙 改善睡眠质量</li>
+                    <li>🧘‍♀️ 增强冥想效果</li>
+                    <li>✨ 提升精神力量</li>
+                </ul>
             </div>
 
-            <!-- Calm Result (Amethyst) -->
-            <div class="result-container result-calm" id="calm-result">
-                <div class="crystal-header">
-                    <h1>Amethyst 紫水晶 💜</h1>
-                    <p>The Crystal of Peace and Wisdom<br>平静与智慧的能量水晶</p>
-                </div>
-                <!-- Calm content -->
+            <div class="crystal-card">
+                <h2>Moonstone 月光石 🌙</h2>
+                <p>The stone of dreams and intuition<br>梦境与直觉之石</p>
+                <p class="elements">水相 Water 木相 Wood</p>
+                <ul>
+                    <li>🌟 增强直觉能力</li>
+                    <li>💫 激发创意灵感</li>
+                    <li>✨ 平衡情绪波动</li>
+                </ul>
             </div>
 
-            <!-- Focus Result (Clear Quartz) -->
-            <div class="result-container result-focus" id="focus-result">
-                <div class="crystal-header">
-                    <h1>Clear Quartz 白水晶 ✨</h1>
-                    <p>The Crystal of Clarity and Focus<br>清晰与专注的能量水晶</p>
-                </div>
-                <!-- Focus content -->
+            <div class="crystal-card">
+                <h2>Clear Quartz 白水晶 ✨</h2>
+                <p>The stone of clarity and focus<br>清晰与专注之石</p>
+                <p class="elements">金相 Metal 火相 Fire</p>
+                <ul>
+                    <li>💼 提升工作效率</li>
+                    <li>🎯 增强目标专注</li>
+                    <li>⚡ 激活潜在能量</li>
+                </ul>
             </div>
-
-            <!-- Dreamy Result (Moonstone) -->
-            <div class="result-container result-dreamy" id="dreamy-result">
-                <div class="crystal-header">
-                    <h1>Moonstone 月光石 🌙</h1>
-                    <p>The Crystal of Dreams and Intuition<br>梦境与直觉的能量水晶</p>
-                </div>
-                <!-- Dreamy content -->
-            </div>
-        </section>
+        </div>
 
         <div class="social-links">
             <a href="https://instagram.com/whisperlunea" target="_blank">Instagram 📸</a>
@@ -467,180 +208,5 @@
             <a href="mailto:contact@whisperlunea.com">Email 邮箱 ✉️</a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section');
-            const questions = document.querySelectorAll('.question');
-            const progressBar = document.querySelector('.progress');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            let currentQuestion = 0;
-            const answers = {};
-
-            function showSection(sectionId) {
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(sectionId).classList.add('active');
-            }
-
-            window.startQuiz = function() {
-                showSection('quiz');
-                updateProgress();
-            }
-
-            function updateProgress() {
-                const progress = ((currentQuestion + 1) / questions.length) * 100;
-                progressBar.style.width = `${progress}%`;
-            }
-
-            function showQuestion(index) {
-                questions.forEach(q => {
-                    q.classList.remove('active');
-                });
-                questions[index].classList.add('active');
-                
-                prevBtn.disabled = index === 0;
-                nextBtn.textContent = index === questions.length - 1 ? 'See Results 查看结果 →' : 'Next 下一题 →';
-                
-                updateProgress();
-            }
-
-            function selectOption(optionElement) {
-                const questionElement = optionElement.closest('.question');
-                const questionNumber = questionElement.dataset.question;
-                
-                questionElement.querySelectorAll('.option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                optionElement.classList.add('selected');
-                answers[questionNumber] = optionElement.dataset.value;
-            }
-
-            function showResult(type) {
-                // Hide all sections
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Show result section
-                document.getElementById('result').classList.add('active');
-                
-                // Hide all result containers
-                document.querySelectorAll('.result-container').forEach(container => {
-                    container.classList.remove('active');
-                });
-                
-                // Show specific result
-                document.getElementById(type + '-result').classList.add('active');
-                
-                // Update body background
-                document.body.className = 'result-' + type;
-            }
-
-            function getResultType() {
-                // 确保所有问题都已回答
-                if (!answers['1'] || !answers['2'] || !answers['3'] || !answers['4']) {
-                    return null;
-                }
-
-                // 保存星座信息
-                localStorage.setItem('userZodiac', answers['4']);
-                
-                // 计算每种类型的得分
-                let scores = {
-                    calm: 0,    // 紫水晶
-                    joy: 0,     // 玫瑰晶
-                    focus: 0,   // 白水晶
-                    dreamy: 0   // 月光石
-                };
-
-                // 问题1：情绪状态
-                if (answers['1'] === 'anxious') scores.calm += 2;
-                if (answers['1'] === 'sad') scores.joy += 2;
-                if (answers['1'] === 'confused') scores.focus += 2;
-
-                // 问题2：需要的能量
-                if (answers['2'] === 'calm') scores.calm += 2;
-                if (answers['2'] === 'healing') scores.joy += 2;
-                if (answers['2'] === 'focus') scores.focus += 2;
-
-                // 问题3：生活领域
-                if (answers['3'] === 'health') scores.calm += 2;
-                if (answers['3'] === 'love') scores.joy += 2;
-                if (answers['3'] === 'career') scores.focus += 2;
-
-                // 根据星座添加额外得分
-                switch(answers['4']) {
-                    case 'pisces':
-                    case 'cancer':
-                    case 'scorpio':
-                        scores.dreamy += 1;
-                        break;
-                    case 'aries':
-                    case 'leo':
-                    case 'sagittarius':
-                        scores.joy += 1;
-                        break;
-                    case 'taurus':
-                    case 'virgo':
-                    case 'capricorn':
-                        scores.focus += 1;
-                        break;
-                    case 'gemini':
-                    case 'libra':
-                    case 'aquarius':
-                        scores.calm += 1;
-                        break;
-                }
-
-                // 找出得分最高的类型
-                let maxScore = Math.max(...Object.values(scores));
-                let result = Object.keys(scores).find(key => scores[key] === maxScore);
-
-                return result;
-            }
-
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', () => selectOption(option));
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentQuestion > 0) {
-                    currentQuestion--;
-                    showQuestion(currentQuestion);
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                const currentQuestionElement = questions[currentQuestion];
-                const selectedOption = currentQuestionElement.querySelector('.option.selected');
-                
-                if (!selectedOption) {
-                    alert('请选择一个选项再继续 / Please select an option before continuing');
-                    return;
-                }
-                
-                if (currentQuestion < questions.length - 1) {
-                    currentQuestion++;
-                    showQuestion(currentQuestion);
-                } else {
-                    // 获取结果类型
-                    const resultType = getResultType();
-                    
-                    if (!resultType) {
-                        alert('请完成所有问题 / Please complete all questions');
-                        return;
-                    }
-
-                    // 使用相对路径
-                    showResult(resultType);
-                }
-            });
-        });
-    </script>
 </body>
-</html>
+</html> 

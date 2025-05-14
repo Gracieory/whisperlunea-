@@ -1,234 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dreamy Personality - WhisperLunea</title>
+    <title>Dreamy 梦幻水晶推荐 - WhisperLunea</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        :root {
-            --primary-blue: #60a5fa;
-            --secondary-blue: #3b82f6;
-            --accent-blue: #93c5fd;
-            --text-color: #1e293b;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Helvetica Neue', serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            color: #444;
+            line-height: 1.8;
         }
 
-        .container {
-            max-width: 1200px;
+        .result-container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .header {
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 3rem;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
+        .crystal-title {
+            font-size: 2.8em;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
-        .header h2 {
-            font-size: 1.8rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
+        .crystal-subtitle {
+            color: #3b82f6;
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .outfit-grid {
+        .crystal-subtitle .en {
+            display: block;
+            color: #60a5fa;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .crystal-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
-        .outfit-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
+        .info-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
         }
 
-        .outfit-card:hover {
+        .info-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
         }
 
-        .outfit-card h3 {
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
+        .info-card h3 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
-        .style-tips {
-            margin-top: 2rem;
+        .info-card .en {
+            color: #60a5fa;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 8px;
         }
 
-        .style-tips h3 {
+        .zodiac-message {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: #3b82f6;
+            font-size: 1.2em;
+        }
+
+        .zodiac-message .en {
+            display: block;
+            color: #60a5fa;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .outfit-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 48px;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
             color: white;
-            margin-bottom: 1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
         }
 
-        .tips-list {
-            list-style: none;
+        .outfit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
         }
 
-        .tips-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .tips-list li::before {
-            content: "✨";
-            position: absolute;
-            left: 0;
-        }
-
-        .bilingual {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .en {
-            color: var(--text-color);
-        }
-
-        .cn {
-            color: var(--secondary-blue);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header h2 {
-                font-size: 1.5rem;
-            }
+        .outfit-btn .en {
+            display: block;
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header glass-card">
-            <h1>
-                <div class="bilingual">
-                    <span class="en">Dreamy Personality</span>
-                    <span class="cn">梦幻性格</span>
-                </div>
-            </h1>
-            <h2>
-                <div class="bilingual">
-                    <span class="en">Your Style Guide</span>
-                    <span class="cn">你的穿搭指南</span>
-                </div>
-            </h2>
-        </div>
+        <div class="glass-card">
+            <div class="result-container">
+                <h1 class="crystal-title">✨ Dreamy Crystal 梦幻水晶 ✨</h1>
+                <p class="crystal-subtitle">
+                    让梦想与直觉在心中闪耀
+                    <span class="en">Let dreams and intuition shine within</span>
+                </p>
 
-        <div class="outfit-grid">
-            <div class="outfit-card">
-                <h3>
-                    <div class="bilingual">
-                        <span class="en">Ethereal Basics</span>
-                        <span class="cn">空灵基础</span>
+                <div class="crystal-info">
+                    <div class="info-card">
+                        <h3>💎 推荐水晶</h3>
+                        <p>月光石 Moonstone</p>
+                        <p>蓝晶石 Kyanite</p>
+                        <p class="en">Crystals for dreams and intuition</p>
                     </div>
-                </h3>
-                <div class="bilingual">
-                    <span class="en">Flowing silhouettes in soft, dreamy fabrics</span>
-                    <span class="cn">柔软梦幻面料的飘逸轮廓</span>
+
+                    <div class="info-card">
+                        <h3>⭐️ 适合星座</h3>
+                        <p>巨蟹座 Cancer</p>
+                        <p>双鱼座 Pisces</p>
+                        <p class="en">Signs that resonate with dreamy energy</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌸 能量特质</h3>
+                        <p>直觉增强 Enhanced Intuition</p>
+                        <p>梦境指引 Dream Guidance</p>
+                        <p class="en">Nurturing intuition and dreams</p>
+                    </div>
                 </div>
+
+                <div id="zodiac-message" class="zodiac-message">
+                    正在加载你的个性化星座建议...
+                    <span class="en">Loading your personalized zodiac guidance...</span>
+                </div>
+
+                <a href="../outfits/dreamy-outfit.html" class="outfit-btn">
+                    👗 查看穿搭建议
+                    <span class="en">Explore Style Guide</span>
+                </a>
             </div>
-
-            <div class="outfit-card">
-                <h3>
-                    <div class="bilingual">
-                        <span class="en">Color Palette</span>
-                        <span class="cn">色彩搭配</span>
-                    </div>
-                </h3>
-                <div class="bilingual">
-                    <span class="en">Sky blues, misty grays, and pearl whites</span>
-                    <span class="cn">天空蓝、薄雾灰和珍珠白</span>
-                </div>
-            </div>
-
-            <div class="outfit-card">
-                <h3>
-                    <div class="bilingual">
-                        <span class="en">Accessories</span>
-                        <span class="cn">配饰</span>
-                    </div>
-                </h3>
-                <div class="bilingual">
-                    <span class="en">Delicate jewelry with celestial motifs</span>
-                    <span class="cn">带有天体图案的精致珠宝</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="style-tips glass-card">
-            <h3>
-                <div class="bilingual">
-                    <span class="en">Style Tips</span>
-                    <span class="cn">穿搭建议</span>
-                </div>
-            </h3>
-            <ul class="tips-list">
-                <li>
-                    <div class="bilingual">
-                        <span class="en">Layer sheer fabrics for a mystical effect</span>
-                        <span class="cn">叠穿透明面料营造神秘效果</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="bilingual">
-                        <span class="en">Choose flowing silhouettes that move with grace</span>
-                        <span class="cn">选择优雅流动的轮廓线条</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="bilingual">
-                        <span class="en">Incorporate subtle sparkle and iridescent details</span>
-                        <span class="cn">融入细微的闪光和虹彩细节</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="bilingual">
-                        <span class="en">Mix textures to create depth and interest</span>
-                        <span class="cn">混搭质地创造层次感和趣味性</span>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const zodiacSign = localStorage.getItem('zodiacSign');
+            const zodiacMessage = document.getElementById('zodiac-message');
+            
+            const messages = {
+                fire: {
+                    zh: "作为充满活力的火象星座，梦幻水晶能帮助你在行动中倾听内心的声音～",
+                    en: "As a vibrant Fire sign, Dreamy crystals help you listen to your inner voice while taking action~"
+                },
+                earth: {
+                    zh: "作为稳重的土象星座，梦幻水晶能为你打开更多创意与想象的空间～",
+                    en: "As a grounded Earth sign, Dreamy crystals open up more space for creativity and imagination~"
+                },
+                air: {
+                    zh: "作为灵动的风象星座，梦幻水晶能让你的直觉与理性完美平衡～",
+                    en: "As a free-spirited Air sign, Dreamy crystals help balance your intuition with rationality~"
+                },
+                water: {
+                    zh: "作为感性的水象星座，梦幻水晶能让你的梦境指引更加清晰明确～",
+                    en: "As an intuitive Water sign, Dreamy crystals make your dream guidance clearer and more precise~"
+                }
+            };
+
+            const defaultMessage = {
+                zh: "梦幻水晶能为你的生活带来神秘梦幻的能量～",
+                en: "Dreamy crystals will bring mysterious and magical energy to your life~"
+            };
+
+            const message = messages[zodiacSign] || defaultMessage;
+            zodiacMessage.innerHTML = `
+                ${message.zh}
+                <span class="en">${message.en}</span>
+            `;
+        });
+    </script>
 </body>
 </html> 

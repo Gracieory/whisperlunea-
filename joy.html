@@ -1,304 +1,207 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhisperLunea 🌙 - Your Crystal Match</title>
+    <title>Joy 情绪水晶推荐 - WhisperLunea</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        :root {
-            --primary-color: #ffb7c5;
-            --secondary-color: #ffd1dc;
-            --accent-color: #ff9eaa;
-            --text-color: #4a4a4a;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Noto Serif SC', serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, #ffb7c5, #ffd1dc, #ffe3e7);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-family: 'Helvetica Neue', serif;
+            background: linear-gradient(135deg, #fff7f5 0%, #fdf2f8 100%);
+            color: #444;
+            line-height: 1.8;
         }
 
         .result-container {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            animation: fadeIn 1s ease;
-        }
-
-        .crystal-header {
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 3rem;
         }
 
-        .crystal-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .crystal-title {
+            font-size: 2.8em;
+            background: linear-gradient(45deg, #f472b6, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
-        .crystal-header p {
-            font-size: 1.2rem;
-            color: #666;
-            font-style: italic;
+        .crystal-subtitle {
+            color: #fb7185;
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
-        .crystal-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
+        .crystal-subtitle .en {
             display: block;
-            object-fit: cover;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            color: #f472b6;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 5px;
         }
 
         .crystal-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
-        .crystal-info h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .crystal-properties {
-            list-style: none;
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-
-        .crystal-properties li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .crystal-properties li::before {
-            content: "✨";
-            position: absolute;
-            left: 0;
-        }
-
-        .element-tags {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .element-tag {
-            display: inline-block;
-            padding: 0.3rem 1rem;
+        .info-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 30px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .element-water { background: #7fcdff; }
-        .element-earth { background: #97c1a9; }
-
-        .back-btn {
-            display: block;
-            width: 200px;
-            margin: 2rem auto 0;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-size: 1.1rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
         }
 
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--shadow-color);
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(251, 113, 133, 0.1);
         }
 
-        .benefit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+        .info-card h3 {
+            color: #f472b6;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
-        .benefit-card {
-            background: white;
-            padding: 1.5rem;
+        .info-card .en {
+            color: #fb7185;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .zodiac-message {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 25px;
             border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px var(--shadow-color);
+            margin: 30px 0;
+            color: #f472b6;
+            font-size: 1.2em;
         }
 
-        .benefit-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+        .zodiac-message .en {
+            display: block;
+            color: #fb7185;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 10px;
         }
 
-        .benefit-card p {
-            color: #666;
-            font-size: 0.9rem;
+        .outfit-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 48px;
+            background: linear-gradient(45deg, #f472b6, #fb7185);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .outfit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 113, 133, 0.2);
+        }
+
+        .outfit-btn .en {
+            display: block;
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="result-container">
-        <div class="crystal-header">
-            <h1>Rose Quartz 玫瑰晶 💗</h1>
-            <p>The Crystal of Love and Joy<br>爱与喜悦的能量水晶</p>
-        </div>
+    <div class="container">
+        <div class="glass-card">
+            <div class="result-container">
+                <h1 class="crystal-title">✨ Joy Crystal 喜悦水晶 ✨</h1>
+                <p class="crystal-subtitle">
+                    让爱与喜悦在生命中绽放
+                    <span class="en">Let love and joy blossom in your life</span>
+                </p>
 
-        <img src="https://via.placeholder.com/200x200.jpg?text=Rose+Quartz" alt="Rose Quartz" class="crystal-img">
+                <div class="crystal-info">
+                    <div class="info-card">
+                        <h3>💎 推荐水晶</h3>
+                        <p>粉晶 Rose Quartz</p>
+                        <p>黄水晶 Citrine</p>
+                        <p class="en">Crystals for joy and positive energy</p>
+                    </div>
 
-        <div class="crystal-info">
-            <h2>Your Crystal Match 你的水晶匹配</h2>
-            <div class="element-tags">
-                <span class="element-tag element-water">水相 Water</span>
-                <span class="element-tag element-earth">土相 Earth</span>
+                    <div class="info-card">
+                        <h3>⭐️ 适合星座</h3>
+                        <p>白羊座 Aries</p>
+                        <p>狮子座 Leo</p>
+                        <p class="en">Signs that resonate with joyful energy</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌸 能量特质</h3>
+                        <p>爱的能量 Love Energy</p>
+                        <p>正向思维 Positive Thinking</p>
+                        <p class="en">Nurturing love and happiness</p>
+                    </div>
+                </div>
+
+                <div id="zodiac-message" class="zodiac-message">
+                    正在加载你的个性化星座建议...
+                    <span class="en">Loading your personalized zodiac guidance...</span>
+                </div>
+
+                <a href="../outfits/joy-outfit.html" class="outfit-btn">
+                    👗 查看穿搭建议
+                    <span class="en">Explore Style Guide</span>
+                </a>
             </div>
-            <p>Based on your emotional resonance, Rose Quartz is your perfect crystal companion.<br>
-            根据你的情感共鸣，玫瑰晶是最适合你的水晶伴侣。</p>
         </div>
-
-        <div class="crystal-info">
-            <h2>Key Benefits 主要功效</h2>
-            <div class="benefit-grid">
-                <div class="benefit-card">
-                    <h3>💕 Love & Relationships 爱情缘分</h3>
-                    <p>Attracts romantic love and strengthens relationships<br>
-                    吸引浪漫之爱，增进感情关系</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>💝 Self-Love 自我关爱</h3>
-                    <p>Promotes self-acceptance and inner healing<br>
-                    培养自我接纳，内在疗愈</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>🌸 Emotional Healing 情感疗愈</h3>
-                    <p>Soothes emotional wounds and past trauma<br>
-                    抚慰情感创伤，化解过往</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="crystal-info">
-            <h2>Your Zodiac Harmony 星座调和</h2>
-            <p id="zodiacText">Loading your zodiac information...<br>正在加载你的星座信息...</p>
-        </div>
-
-        <div class="crystal-info">
-            <h2>Usage Recommendations 使用建议</h2>
-            <ul class="crystal-properties">
-                <li>Place by your bedside for sweet dreams and peaceful sleep<br>
-                放置在床头，助你好梦安眠</li>
-                <li>Wear as jewelry to attract love and maintain positive energy<br>
-                佩戴首饰，吸引爱情，保持正能量</li>
-                <li>Meditate with the crystal for self-love practice<br>
-                冥想时使用，练习自我关爱</li>
-                <li>Keep in your relationship corner (Southwest) to enhance romance<br>
-                放置在感情位（西南方），增进桃花运</li>
-            </ul>
-        </div>
-
-        <a href="../index.html" class="back-btn">← Back to Home 返回首页</a>
     </div>
 
     <script>
-        window.onload = function() {
-            const zodiac = localStorage.getItem('userZodiac');
-            const zodiacInfo = {
-                aries: {
-                    en: "Rose Quartz helps balance Aries' passionate nature with gentle love energy",
-                    zh: "玫瑰晶帮助白羊座平衡热情与温柔的能量"
+        document.addEventListener('DOMContentLoaded', () => {
+            const zodiacSign = localStorage.getItem('zodiacSign');
+            const zodiacMessage = document.getElementById('zodiac-message');
+            
+            const messages = {
+                fire: {
+                    zh: "作为充满活力的火象星座，Joy水晶能让你的热情更添一份温柔的光芒～",
+                    en: "As a vibrant Fire sign, Joy crystals add a gentle glow to your passionate energy~"
                 },
-                taurus: {
-                    en: "Perfect for Taurus's appreciation of beauty and love of comfort",
-                    zh: "完美契合金牛座对美的欣赏与对舒适的追求"
+                earth: {
+                    zh: "作为稳重的土象星座，Joy水晶能为你的生活增添一抹轻盈的快乐～",
+                    en: "As a grounded Earth sign, Joy crystals bring lightness and happiness to your life~"
                 },
-                gemini: {
-                    en: "Helps Gemini connect emotions with communication",
-                    zh: "帮助双子座将情感与沟通完美结合"
+                air: {
+                    zh: "作为灵动的风象星座，Joy水晶能让你的思维更添一份温暖的色彩～",
+                    en: "As a free-spirited Air sign, Joy crystals add warm hues to your thoughts~"
                 },
-                cancer: {
-                    en: "Enhances Cancer's natural nurturing abilities with self-love",
-                    zh: "增强巨蟹座天生的关怀能力，平衡自我关爱"
-                },
-                leo: {
-                    en: "Balances Leo's self-expression with compassionate love",
-                    zh: "平衡狮子座的自我表达与慈悲之爱"
-                },
-                virgo: {
-                    en: "Helps Virgo open their heart while maintaining boundaries",
-                    zh: "帮助处女座在保持界限的同时敞开心扉"
-                },
-                libra: {
-                    en: "Amplifies Libra's natural affinity for love and harmony",
-                    zh: "增强天秤座对爱与和谐的天然亲和力"
-                },
-                scorpio: {
-                    en: "Softens Scorpio's intensity with gentle loving energy",
-                    zh: "用温柔的爱意软化天蝎座的强烈情感"
-                },
-                sagittarius: {
-                    en: "Helps Sagittarius find emotional stability in relationships",
-                    zh: "帮助射手座在关系中找到情感稳定"
-                },
-                capricorn: {
-                    en: "Encourages Capricorn to open up to love and vulnerability",
-                    zh: "鼓励摩羯座向爱敞开心扉，接纳脆弱"
-                },
-                aquarius: {
-                    en: "Connects Aquarius's humanitarian love with personal relationships",
-                    zh: "将水瓶座的博爱与个人情感联结"
-                },
-                pisces: {
-                    en: "Enhances Pisces' natural romantic nature and emotional healing",
-                    zh: "增强双鱼座浪漫天性，促进情感疗愈"
+                water: {
+                    zh: "作为感性的水象星座，Joy水晶能为你的情感带来更多愉悦的能量～",
+                    en: "As an intuitive Water sign, Joy crystals bring more delightful energy to your emotions~"
                 }
             };
-            
-            if (zodiac && zodiacInfo[zodiac]) {
-                document.getElementById('zodiacText').innerHTML = 
-                    `${zodiacInfo[zodiac].en}<br>${zodiacInfo[zodiac].zh}`;
-            } else {
-                document.getElementById('zodiacText').innerHTML = 
-                    "Zodiac sign not found<br>未找到星座信息";
-            }
-        };
+
+            const defaultMessage = {
+                zh: "Joy水晶能为你的生活带来满满的幸福能量～",
+                en: "Joy crystals will bring abundant happiness to your life~"
+            };
+
+            const message = messages[zodiacSign] || defaultMessage;
+            zodiacMessage.innerHTML = `
+                ${message.zh}
+                <span class="en">${message.en}</span>
+            `;
+        });
     </script>
 </body>
 </html> 
