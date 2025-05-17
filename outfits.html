@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Style Guide - WhisperLunea</title>
+    <style>
+        :root {
+            --joy-primary: #f472b6;
+            --joy-secondary: #fb7185;
+            --calm-primary: #a855f7;
+            --calm-secondary: #7c3aed;
+            --dreamy-primary: #60a5fa;
+            --dreamy-secondary: #3b82f6;
+            --focus-primary: #64748b;
+            --focus-secondary: #475569;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdf2f8 0%, #ede9fe 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.8rem 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--calm-primary), var(--joy-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tab.active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #joy-tab.active {
+            background: linear-gradient(45deg, var(--joy-primary), var(--joy-secondary));
+            color: white;
+        }
+
+        #calm-tab.active {
+            background: linear-gradient(45deg, var(--calm-primary), var(--calm-secondary));
+            color: white;
+        }
+
+        #dreamy-tab.active {
+            background: linear-gradient(45deg, var(--dreamy-primary), var(--dreamy-secondary));
+            color: white;
+        }
+
+        #focus-tab.active {
+            background: linear-gradient(45deg, var(--focus-primary), var(--focus-secondary));
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .outfit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        #joy-section .outfit-card h3 { color: var(--joy-primary); }
+        #calm-section .outfit-card h3 { color: var(--calm-primary); }
+        #dreamy-section .outfit-card h3 { color: var(--dreamy-primary); }
+        #focus-section .outfit-card h3 { color: var(--focus-primary); }
+
+        .outfit-card p {
+            margin: 1rem 0;
+            color: var(--text-color);
+            opacity: 0.8;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .outfit-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .outfit-card li {
+            margin: 0.8rem 0;
+            padding-left: 2em;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .outfit-card li:hover {
+            transform: translateX(5px);
+        }
+
+        #joy-section .outfit-card li:hover { color: var(--joy-primary); }
+        #calm-section .outfit-card li:hover { color: var(--calm-primary); }
+        #dreamy-section .outfit-card li:hover { color: var(--dreamy-primary); }
+        #focus-section .outfit-card li:hover { color: var(--focus-primary); }
+
+        .outfit-card li::before {
+            content: "👗";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .crystal-tips {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .crystal-tips h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        #joy-section .crystal-tips h3 { color: var(--joy-primary); }
+        #calm-section .crystal-tips h3 { color: var(--calm-primary); }
+        #dreamy-section .crystal-tips h3 { color: var(--dreamy-primary); }
+        #focus-section .crystal-tips h3 { color: var(--focus-primary); }
+
+        .crystal-tips p {
+            margin: 1rem 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .crystal-tips ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .crystal-tips li {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .crystal-tips li:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crystal-tips ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./index.html" class="back-btn">← 返回主页 Back to Home</a>
+        
+        <h1 class="title">Crystal Style Guide 水晶穿搭指南</h1>
+        <p class="subtitle">
+            Express your crystal personality through fashion<br>
+            用穿搭展现你的水晶个性
+        </p>
+
+        <div class="tabs">
+            <div class="tab active" id="joy-tab" onclick="showSection('joy')">Rose Quartz 玫瑰晶 💗</div>
+            <div class="tab" id="calm-tab" onclick="showSection('calm')">Amethyst 紫水晶 💜</div>
+            <div class="tab" id="dreamy-tab" onclick="showSection('dreamy')">Moonstone 月光石 🌙</div>
+            <div class="tab" id="focus-tab" onclick="showSection('focus')">Clear Quartz 白水晶 ✨</div>
+        </div>
+
+        <div id="joy-section" class="content-section active">
+            <div class="outfit-grid">
+                <div class="outfit-card">
+                    <h3>Daily Casual 日常休闲</h3>
+                    <p>舒适温柔的日常穿搭</p>
+                    <ul>
+                        <li>柔软的羊绒针织开衫，搭配纯棉基础款</li>
+                        <li>高腰阔腿裤，打造优雅身材比例</li>
+                        <li>珍珠装饰芭蕾平底鞋，增添精致感</li>
+                        <li>玫瑰金首饰点缀，提升整体气质</li>
+                        <li>粉色系小包包，完美日常搭配</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Work Style 职场风格</h3>
+                    <p>优雅专业的办公室穿搭</p>
+                    <ul>
+                        <li>浅粉色调西装外套，柔和职场气场</li>
+                        <li>真丝衬衫，搭配蝴蝶结领结</li>
+                        <li>高腰铅笔裙或直筒西装裤</li>
+                        <li>裸粉色尖头高跟鞋，展现优雅气质</li>
+                        <li>珍珠耳环与项链，点缀职业装扮</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Dating Look 约会造型</h3>
+                    <p>浪漫甜美的约会装扮</p>
+                    <ul>
+                        <li>荷叶边雪纺连衣裙，突显甜美气质</li>
+                        <li>蝴蝶结装饰上衣，搭配百褶裙</li>
+                        <li>粉色系链条小包，增添时尚感</li>
+                        <li>水晶发饰，打造浪漫造型</li>
+                        <li>玫瑰金手链与戒指，完美点缀</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Color Palette 配色方案</h3>
+                    <p>适合玫瑰晶个性的颜色</p>
+                    <ul>
+                        <li>柔和粉红色系：展现温柔气质</li>
+                        <li>温暖珊瑚色：增添活力光彩</li>
+                        <li>奶白色打底：突出柔美气质</li>
+                        <li>玫瑰金点缀：提升整体格调</li>
+                        <li>淡紫色搭配：增添浪漫感</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="crystal-tips">
+                <h3>Crystal Styling Tips 水晶搭配技巧</h3>
+                <p>让水晶为你的穿搭增添能量与光彩</p>
+                <ul>
+                    <li>佩戴玫瑰晶项链，增强心轮能量<br>Rose quartz necklace for heart chakra</li>
+                    <li>搭配粉晶手链，提升个人魅力<br>Pink crystal bracelet for charm</li>
+                    <li>选择水晶耳环，平衡面部气场<br>Crystal earrings for face aura</li>
+                    <li>使用晶石胸针，点缀职业装扮<br>Crystal brooch for work attire</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="calm-section" class="content-section">
+            <div class="outfit-grid">
+                <div class="outfit-card">
+                    <h3>Daily Casual 日常休闲</h3>
+                    <p>静谧优雅的日常穿搭</p>
+                    <ul>
+                        <li>宽松薰衣草色针织衫，营造舒适感</li>
+                        <li>高级感丝绒阔腿裤，突显优雅</li>
+                        <li>紫色系平底鞋，轻松自在</li>
+                        <li>银色简约首饰，点缀细节</li>
+                        <li>深紫色托特包，实用大方</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Work Style 职场风格</h3>
+                    <p>沉稳大气的办公室穿搭</p>
+                    <ul>
+                        <li>深紫色西装外套，展现专业感</li>
+                        <li>浅紫色真丝衬衫，优雅知性</li>
+                        <li>修身西装裤，干练有型</li>
+                        <li>深色系高跟鞋，稳重大方</li>
+                        <li>紫水晶胸针，彰显品味</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Meditation Look 冥想装扮</h3>
+                    <p>舒适静谧的休闲装扮</p>
+                    <ul>
+                        <li>柔软瑜伽服，自在舒适</li>
+                        <li>宽松针织开衫，随意披搭</li>
+                        <li>舒适休闲鞋，轻松自在</li>
+                        <li>紫水晶项链，净化能量</li>
+                        <li>薰衣草色披肩，静谧优雅</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Color Palette 配色方案</h3>
+                    <p>适合紫水晶个性的颜色</p>
+                    <ul>
+                        <li>深邃紫色：展现神秘感</li>
+                        <li>薰衣草色：轻柔梦幻</li>
+                        <li>银灰色调：沉稳大气</li>
+                        <li>纯白色：清新纯净</li>
+                        <li>深蓝色：静谧优雅</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="crystal-tips">
+                <h3>Crystal Styling Tips 水晶搭配技巧</h3>
+                <p>用紫水晶能量提升穿搭气质</p>
+                <ul>
+                    <li>佩戴紫水晶吊坠，增强冥想效果<br>Amethyst pendant for meditation</li>
+                    <li>选择紫晶手链，平衡情绪<br>Amethyst bracelet for emotional balance</li>
+                    <li>使用水晶装饰品，提升睡眠<br>Crystal accessories for better sleep</li>
+                    <li>搭配银饰，增强净化能量<br>Silver jewelry for purification</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="dreamy-section" class="content-section">
+            <div class="outfit-grid">
+                <div class="outfit-card">
+                    <h3>Daily Casual 日常休闲</h3>
+                    <p>梦幻飘逸的日常穿搭</p>
+                    <ul>
+                        <li>月光石色雪纺上衣，轻盈飘逸</li>
+                        <li>浅蓝色阔腿裤，随性优雅</li>
+                        <li>珍珠母贝装饰凉鞋，梦幻精致</li>
+                        <li>月光石首饰，增添灵气</li>
+                        <li>蓝色渐变手提包，独特时尚</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Creative Style 创意风格</h3>
+                    <p>富有艺术感的穿搭</p>
+                    <ul>
+                        <li>渐变色连衣裙，展现艺术感</li>
+                        <li>不规则剪裁上衣，创意十足</li>
+                        <li>设计感半身裙，独特魅力</li>
+                        <li>月光石戒指，点缀灵感</li>
+                        <li>特色手工包包，彰显个性</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Night Out 夜晚装扮</h3>
+                    <p>神秘优雅的夜出造型</p>
+                    <ul>
+                        <li>星空印花长裙，浪漫梦幻</li>
+                        <li>丝绒质地上衣，柔软华贵</li>
+                        <li>月光石装饰高跟鞋，闪耀迷人</li>
+                        <li>水晶耳环，璀璨夺目</li>
+                        <li>星月图案披肩，神秘优雅</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Color Palette 配色方案</h3>
+                    <p>适合月光石个性的颜色</p>
+                    <ul>
+                        <li>月光石蓝：梦幻空灵</li>
+                        <li>珍珠白：纯净优雅</li>
+                        <li>星空蓝：神秘深邃</li>
+                        <li>银色：闪耀灵动</li>
+                        <li>薄雾灰：轻柔朦胧</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="crystal-tips">
+                <h3>Crystal Styling Tips 水晶搭配技巧</h3>
+                <p>让月光石能量激发你的创意灵感</p>
+                <ul>
+                    <li>佩戴月光石项链，增强直觉<br>Moonstone necklace for intuition</li>
+                    <li>选择月光石戒指，激发创意<br>Moonstone ring for creativity</li>
+                    <li>使用水晶手链，平衡情绪<br>Crystal bracelet for emotional balance</li>
+                    <li>搭配珍珠饰品，提升优雅<br>Pearl accessories for elegance</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="focus-section" class="content-section">
+            <div class="outfit-grid">
+                <div class="outfit-card">
+                    <h3>Daily Casual 日常休闲</h3>
+                    <p>简约利落的日常穿搭</p>
+                    <ul>
+                        <li>白色简约T恤，干净利落</li>
+                        <li>直筒牛仔裤，修身有型</li>
+                        <li>白色运动鞋，舒适百搭</li>
+                        <li>白水晶手链，提升专注</li>
+                        <li>极简风格双肩包，实用便携</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Work Style 职场风格</h3>
+                    <p>专业干练的办公室穿搭</p>
+                    <ul>
+                        <li>灰色简约西装，利落干练</li>
+                        <li>白色衬衫，清爽利落</li>
+                        <li>黑色西装裤，修身挺括</li>
+                        <li>黑色皮鞋，正式稳重</li>
+                        <li>水晶胸针，点缀气质</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Study Look 学习装扮</h3>
+                    <p>舒适专注的学习造型</p>
+                    <ul>
+                        <li>灰色连帽衫，舒适随性</li>
+                        <li>黑色休闲裤，简约大方</li>
+                        <li>舒适平底鞋，轻松自在</li>
+                        <li>水晶项链，提升能量</li>
+                        <li>实用电脑包，功能性强</li>
+                    </ul>
+                </div>
+
+                <div class="outfit-card">
+                    <h3>Color Palette 配色方案</h3>
+                    <p>适合白水晶个性的颜色</p>
+                    <ul>
+                        <li>纯白色：清晰纯净</li>
+                        <li>浅灰色：沉稳大气</li>
+                        <li>深灰色：专业稳重</li>
+                        <li>黑色：干练利落</li>
+                        <li>银色：点缀提升</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="crystal-tips">
+                <h3>Crystal Styling Tips 水晶搭配技巧</h3>
+                <p>用白水晶能量提升专注力与效率</p>
+                <ul>
+                    <li>佩戴白水晶项链，增强专注力<br>Clear quartz necklace for focus</li>
+                    <li>选择水晶手链，提升工作效率<br>Crystal bracelet for efficiency</li>
+                    <li>使用水晶胸针，增强自信<br>Crystal brooch for confidence</li>
+                    <li>搭配银饰，保持清晰思维<br>Silver jewelry for clear thinking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId + '-section').classList.add('active');
+            
+            // Activate selected tab
+            document.getElementById(sectionId + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html> 
