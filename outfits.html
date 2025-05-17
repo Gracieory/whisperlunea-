@@ -571,6 +571,19 @@
             // Activate selected tab
             document.getElementById(sectionId + '-tab').classList.add('active');
         }
+
+        // Handle URL parameter on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const crystal = urlParams.get('crystal');
+            
+            if (crystal && ['joy', 'calm', 'dreamy', 'focus'].includes(crystal)) {
+                showSection(crystal);
+            } else {
+                // Default to 'joy' if no valid crystal type is specified
+                showSection('joy');
+            }
+        });
     </script>
 </body>
 </html> 

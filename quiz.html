@@ -82,6 +82,11 @@
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
         }
 
+        .option.selected {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: #6366f1;
+        }
+
         .option h3 {
             color: #6366f1;
             margin-bottom: 10px;
@@ -93,6 +98,41 @@
             font-style: italic;
             font-size: 0.9em;
             margin-top: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #6366f1;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #ef4444;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
         }
 
         .zodiac-selection {
@@ -195,7 +235,100 @@
                     <div class="progress"></div>
                 </div>
 
-                <div id="questions"></div>
+                <div id="questions">
+                    <div class="question active" data-question="1">
+                        <h2>✨ 当你需要放松时，最想做什么？</h2>
+                        <div class="en">What's your ideal way to unwind?</div>
+                        <div class="options">
+                            <div class="option" data-value="joy">
+                                <h3>🌟 看星星，感受宇宙能量</h3>
+                                <div class="en">Stargazing, connecting with cosmic energy</div>
+                            </div>
+                            <div class="option" data-value="calm">
+                                <h3>🛁 泡个温暖的香薰浴</h3>
+                                <div class="en">Taking a warm aromatherapy bath</div>
+                            </div>
+                            <div class="option" data-value="dreamy">
+                                <h3>🌙 月光下散步冥想</h3>
+                                <div class="en">Moonlit walks and meditation</div>
+                            </div>
+                            <div class="option" data-value="focus">
+                                <h3>✨ 整理空间，让思维更清晰</h3>
+                                <div class="en">Organizing space for mental clarity</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="2">
+                        <h2>🌈 你最向往的自然风景是？</h2>
+                        <div class="en">Which natural landscape resonates with your soul?</div>
+                        <div class="options">
+                            <div class="option" data-value="joy">
+                                <h3>🌅 粉色的晚霞</h3>
+                                <div class="en">Rose-tinted sunset skies</div>
+                            </div>
+                            <div class="option" data-value="calm">
+                                <h3>🌾 紫色薰衣草花田</h3>
+                                <div class="en">Fields of swaying lavender</div>
+                            </div>
+                            <div class="option" data-value="dreamy">
+                                <h3>🌕 皎洁的满月</h3>
+                                <div class="en">The luminous full moon</div>
+                            </div>
+                            <div class="option" data-value="focus">
+                                <h3>💧 清澈的山泉</h3>
+                                <div class="en">Crystal-clear mountain springs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="3">
+                        <h2>💝 你希望在生活中培养什么品质？</h2>
+                        <div class="en">What quality do you wish to nurture in your life?</div>
+                        <div class="options">
+                            <div class="option" data-value="joy">
+                                <h3>💗 温柔的爱与同理心</h3>
+                                <div class="en">Gentle love and empathy</div>
+                            </div>
+                            <div class="option" data-value="calm">
+                                <h3>🕊️ 内在的平静与智慧</h3>
+                                <div class="en">Inner peace and wisdom</div>
+                            </div>
+                            <div class="option" data-value="dreamy">
+                                <h3>✨ 直觉力与创造力</h3>
+                                <div class="en">Intuition and creativity</div>
+                            </div>
+                            <div class="option" data-value="focus">
+                                <h3>💫 专注力与清晰度</h3>
+                                <div class="en">Focus and mental clarity</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question" data-question="4">
+                        <h2>🌅 你最喜欢哪个时刻？</h2>
+                        <div class="en">Which moment of the day speaks to your heart?</div>
+                        <div class="options">
+                            <div class="option" data-value="joy">
+                                <h3>🌄 温暖的清晨阳光</h3>
+                                <div class="en">Gentle morning sunlight</div>
+                            </div>
+                            <div class="option" data-value="calm">
+                                <h3>🌆 宁静的黄昏时分</h3>
+                                <div class="en">Tranquil twilight hours</div>
+                            </div>
+                            <div class="option" data-value="dreamy">
+                                <h3>🌙 梦幻的月夜</h3>
+                                <div class="en">Mystical moonlit night</div>
+                            </div>
+                            <div class="option" data-value="focus">
+                                <h3>🌅 清新的破晓时分</h3>
+                                <div class="en">Crisp dawn moments</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="zodiac-selection" class="zodiac-selection">
                     <h2>✨ 选择你的星座 ✨</h2>
                     <div class="en">Choose Your Zodiac Sign</div>
@@ -424,8 +557,8 @@
             const result = Object.keys(counts).find(key => counts[key] === maxCount);
             
             // 根据结果跳转到对应的水晶页面
-            const pages = ['joy.html', 'calm.html', 'dreamy.html', 'focus.html'];
-            window.location.href = `results/${pages[result]}`;
+            const crystalTypes = ['joy', 'calm', 'dreamy', 'focus'];
+            window.location.href = `outfits.html?crystal=${crystalTypes[result]}`;
         }
 
         // 初始化显示第一个问题
