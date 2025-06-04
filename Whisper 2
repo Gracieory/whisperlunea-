@@ -477,7 +477,7 @@
                     showQuestion(currentQuestion);
                 } else {
                     // Show results
-                    window.location.href = '/whisperlunea-/results/' + determineResult();
+                    window.location.href = './' + determineResult();
                 }
             });
         });
